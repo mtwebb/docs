@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "codecept": "HEADLESS=true codeceptjs run --steps",
-    "dev": "run-p routify rollup",
+    "dev": "npm run clear && run-p routify rollup",
     "dev:nollup": "run-p routify nollup",
     "clear": "rm -rf dist codecept static/screenshots",
     "build": "npm run clear && routify -b && rollup -c && routify export && workbox injectManifest",
@@ -38,6 +38,7 @@
     "rollup-plugin-svelte-hot": "^0.10.0",
     "rollup-plugin-terser": "^6.1.0",
     "spassr": "^1.1.2",
+    "svelte-icons": "^2.1.0",
     "tailwindcss": "^1.7.6"
   },
   "dependencies": {

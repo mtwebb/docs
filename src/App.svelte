@@ -19,12 +19,16 @@
     height: 100%;
   }
 
-  img {
-    @apply shadow-lg container mx-auto;
+  img.screenshot {
+    @apply border shadow-lg container mx-auto;
   }
 
   img.small {
     @apply m-8;
+  }
+
+  h1 {
+    @apply text-2xl;
   }
 
   .center {

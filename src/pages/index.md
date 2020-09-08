@@ -4,5 +4,5 @@ This is text.
 
 <screenshot name="main">
   I.amOnPage("/");
-  I.click("Play");
+  I.click("Components");
 </screenshot>

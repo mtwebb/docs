@@ -67,6 +67,7 @@ async function Process(node) {
       const result = h("img", {
         alt: node.properties.name,
         src: `${imgSrc}.png`,
+        class: "screenshot",
       });
 
       resolve(result);
