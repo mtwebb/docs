@@ -1,4 +1,4 @@
-# Boardgame Lab Documentation Site
+# Boardgame Lab Documentation
 
 ### Building
 
