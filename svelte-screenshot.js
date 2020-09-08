@@ -4,10 +4,7 @@ import fs from "fs";
 import path from "path";
 import crypto from "crypto";
 
-export default ({
-  codeceptDir = "codecept",
-  screenshotDir = "/screenshots",
-}) => ({
+export default ({ codeceptDir = "codecept", imgDir = "/screenshots" }) => ({
   markup: ({ content, filename }) => {
     const s = new MagicString(content);
     const ast = svelte.parse(content, { filename });
@@ -16,7 +13,9 @@ export default ({
       enter: function (node) {
         if (node.name === "screenshot") {
           // Put attributes in map.
-          let opts = {};
+          let opts = {
+            class: "",
+          };
           node.attributes.forEach((attr) => {
             const value = attr.value[0].raw;
             opts[attr.name] = value;
@@ -55,7 +54,7 @@ export default ({
 
           // Replace <screenshot> tag with an <img> pointing to a screenshot
           // image that we generate from the Codecept test file.
-          const imgSrc = path.join(screenshotDir, id);
+          const imgSrc = path.join(imgDir, id);
           const fragment = `<img class="${opts.class}" src="${imgSrc}.png" alt=${opts.name} />`;
           s.overwrite(node.start, node.end, fragment);
         }

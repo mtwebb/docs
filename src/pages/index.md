@@ -1,6 +1,7 @@
-<h1>Screenshot</h1>
+# Screenshot
 
-<!-- prettier-ignore -->
+This is text.
+
 <screenshot name="sanity">
   I.amOnPage("/");
 

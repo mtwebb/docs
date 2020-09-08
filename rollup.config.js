@@ -1,5 +1,6 @@
 import { createRollupConfigs } from "./scripts/base.config.js";
 import autoPreprocess from "svelte-preprocess";
+import { mdsvex } from "mdsvex";
 import screenshot from "./svelte-screenshot";
 
 const production = !process.env.ROLLUP_WATCH;
@@ -12,8 +13,12 @@ export const config = {
   production,
   rollupWrapper: (rollup) => rollup,
   svelteWrapper: (svelte) => {
+    svelte.extensions = [".svelte", ".md"];
     svelte.preprocess = [
       screenshot({ outDir: "screenshots" }),
+      mdsvex({
+        extension: ".md",
+      }),
       autoPreprocess({
         postcss: true,
       }),
