@@ -2,13 +2,7 @@
 
 This is text.
 
-<screenshot name="sanity">
+<screenshot name="main">
   I.amOnPage("/");
-
-  I.click("Components");
-  I.seeInCurrentUrl("/components");
-
-  I.click("[data-testid=create]");
-  I.click("[data-testid=card]");
-  I.click("[data-testid=template]:first-child");
+  I.clickOnText("Components");
 </screenshot>
