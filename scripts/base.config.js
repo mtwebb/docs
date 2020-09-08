@@ -4,7 +4,8 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import livereload from "rollup-plugin-livereload";
 import { terser } from "rollup-plugin-terser";
-import copy from "rollup-plugin-copy";
+import watchCopy from "rollup-plugin-copy-watch";
+import normalCopy from "rollup-plugin-copy";
 import del from "del";
 import replace from "@rollup/plugin-replace";
 import { spassr } from "spassr";
@@ -47,6 +48,8 @@ function baseConfig(config, ctx) {
     rollupWrapper,
   } = config;
 
+  const copy = production ? normalCopy : watchCopy;
+
   const outputConfig = !!dynamicImports
     ? { format: "esm", dir: buildDir }
     : { format: "iife", file: `${buildDir}/bundle.js` };
@@ -73,6 +76,7 @@ function baseConfig(config, ctx) {
       svelte(svelteConfig),
 
       copy({
+        watch: `${staticDir}/screenshots`,
         targets: [
           { src: [`${staticDir}/*`, "!*/(__index.html)"], dest: distDir },
           {
@@ -82,7 +86,7 @@ function baseConfig(config, ctx) {
             transform,
           },
         ],
-        copyOnce: true,
+        // copyOnce: true,
         flatten: false,
       }),
 
