@@ -7,7 +7,7 @@
     "dev:nollup": "run-p routify nollup",
     "clear": "rm -rf codecept static/screenshots",
     "build": "routify -b && rollup -c && routify export && workbox injectManifest",
-    "gen": "run-s clear build codecept",
+    "gen": "run-s clear build",
     "serve": "spassr --serve-spa --spa-port 8080",
     "export": "routify export",
     "rollup": "rollup -cw",

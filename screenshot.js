@@ -4,9 +4,7 @@ import crypto from "crypto";
 import h from "hastscript";
 import raw from "hast-util-raw";
 import toString from "hast-util-to-string";
-import codecept from "codeceptjs";
-
-console.log(codecept);
+import { spawn } from "child_process";
 
 const codeceptDir = "codecept";
 const imgDir = "/screenshots";
@@ -53,6 +51,11 @@ function Process(node) {
 
   // Write file.
   fs.writeFileSync(path.join(codeceptDir, codeceptFilename), codeceptContents);
+
+  // Run Codecept.
+  const cmd = spawn("npm run codecept", { shell: true });
+  cmd.stdout.on("data", (data) => console.log(data.toString()));
+  cmd.stderr.on("data", (data) => console.log(data.toString()));
 
   // Replace <screenshot> tag with an <img> pointing to a screenshot
   // image that we generate from the Codecept test file.

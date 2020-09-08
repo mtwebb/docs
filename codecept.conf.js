@@ -1,6 +1,6 @@
 exports.config = {
   tests: "codecept/*.js",
-  output: "dist/screenshots",
+  output: "static/screenshots",
   helpers: {
     Playwright: {
       url: "http://localhost:5000/",

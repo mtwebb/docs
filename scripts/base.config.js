@@ -70,6 +70,8 @@ function baseConfig(config, ctx) {
       ...outputConfig,
     },
     plugins: [
+      svelte(svelteConfig),
+
       copy({
         targets: [
           { src: [`${staticDir}/*`, "!*/(__index.html)"], dest: distDir },
@@ -83,7 +85,6 @@ function baseConfig(config, ctx) {
         copyOnce: true,
         flatten: false,
       }),
-      svelte(svelteConfig),
 
       // resolve matching modules from current working directory
       resolve({
