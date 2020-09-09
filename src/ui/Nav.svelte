@@ -3,10 +3,21 @@
   import MenuIcon from "svelte-icons/md/MdMenu.svelte";
 
   const nav = [
-    { path: "/", text: "Interface" },
+    { heading: "Getting Started" },
+    { path: "/", text: "Tutorial" },
+    null,
+    { heading: "Editor" },
     { path: "/game", text: "Layout" },
     { path: "/play", text: "Data" },
-    { path: "/play", text: "Game" },
+    null,
+    { heading: "Playtesting" },
+    { path: "/play", text: "Interface" },
+    { path: "/play", text: "Multiplayer" },
+    null,
+    { heading: "Automation" },
+    { path: "/behaviors", text: "Behaviors" },
+    { path: "/attributes", text: "Attributes" },
+    { path: "/traits", text: "Traits" },
   ];
 
   let hamburger;
@@ -51,13 +62,8 @@
     @apply bg-gray-300;
   }
 
-  .social {
-    @apply w-10;
-    opacity: 0.9;
-  }
-
-  .social:hover {
-    opacity: 1;
+  .heading {
+    @apply text-gray-800 uppercase font-bold whitespace-no-wrap mb-1;
   }
 
   .black {
@@ -65,7 +71,7 @@
   }
 
   .nav {
-    @apply transform duration-300 -translate-x-64 fixed top-0 left-0 shadow-lg h-full bg-white z-50 pt-16 select-none;
+    @apply bg-gray-100 px-4 transform duration-300 -translate-x-64 fixed top-0 left-0 shadow-lg h-full bg-white z-50 pt-8 select-none;
   }
 
   .show {
@@ -74,7 +80,7 @@
 
   @screen md {
     .nav {
-      @apply duration-0 text-sm z-auto static translate-x-0 shadow-none border-r pt-8;
+      @apply duration-0 z-auto static translate-x-0 shadow-none border-r pt-12;
     }
   }
 </style>
@@ -85,20 +91,17 @@
   <div class="h-full flex flex-col justify-between">
     <div class="flex flex-col px-4 md:px-2 w-full">
       {#each nav as link}
-        <a on:click={HideWithDelay} href={link.path}>
-          <div
-            class="text-gray-700 rounded cursor-pointer h-8 my-1 flex flex-row
-            items-center hover:bg-gray-100"
-            class:active={$isActive(link.path)}>
-            <div class="w-6 mx-2">
-              {#if link.icon}
-                <svelte:component this={link.icon} />
-              {/if}
+        {#if !link}
+          <div class="h-6" />
+        {:else if link.heading}
+          <div class="heading">{link.heading}</div>
+        {:else}
+          <a on:click={HideWithDelay} href={link.path}>
+            <div class="text-gray-700 hover:text-gray-600 leading-loose">
+              {link.text}
             </div>
-
-            <div class="mr-10">{link.text}</div>
-          </div>
-        </a>
+          </a>
+        {/if}
       {/each}
     </div>
 
