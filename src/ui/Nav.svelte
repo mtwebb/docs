@@ -16,8 +16,8 @@
     null,
     { heading: "Automation" },
     { path: "/behaviors", text: "Behaviors" },
-    { path: "/attributes", text: "Attributes" },
-    { path: "/traits", text: "Traits" },
+    { path: "/attributes", text: "Turn Orders" },
+    { path: "/attributes", text: "Rules" },
   ];
 
   let hamburger;
