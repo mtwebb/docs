@@ -20,7 +20,7 @@
   }
 
   img.screenshot {
-    @apply border shadow-lg container mx-auto;
+    @apply border shadow-lg container mx-auto my-4;
   }
 
   img.small {

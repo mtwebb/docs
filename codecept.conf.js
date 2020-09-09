@@ -3,7 +3,7 @@ exports.config = {
   output: "static/screenshots",
   helpers: {
     Playwright: {
-      url: "https://preview.boardgamelab.app/",
+      url: "http://localhost:8000",
       show: !process.env.HEADLESS,
       browser: process.env.BROWSER || "chromium",
     },

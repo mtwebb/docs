@@ -3,10 +3,10 @@
   import MenuIcon from "svelte-icons/md/MdMenu.svelte";
 
   const nav = [
-    { path: "/components", text: "Components" },
-    { path: "/game", text: "Game" },
-    { path: "/play", text: "Play" },
-    { path: "/settings", text: "Settings" },
+    { path: "/", text: "Interface" },
+    { path: "/game", text: "Layout" },
+    { path: "/play", text: "Data" },
+    { path: "/play", text: "Game" },
   ];
 
   let hamburger;

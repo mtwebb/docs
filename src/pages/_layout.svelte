@@ -39,9 +39,7 @@
     <div class="w-full h-full flex flex-row">
       <Nav />
 
-      <div
-        on:contextmenu|preventDefault
-        class="relative w-full h-full flex-grow overflow-y-auto p-8">
+      <div class="relative w-full h-full flex-grow overflow-y-auto p-8">
         <slot />
       </div>
     </div>
