@@ -4,7 +4,8 @@
 
   const nav = [
     { heading: "Getting Started" },
-    { path: "/", text: "Tutorial" },
+    { path: "/concepts", text: "Concepts" },
+    { path: "/tutorial", text: "Tutorial" },
     null,
     { heading: "Editor" },
     { path: "/game", text: "Layout" },
@@ -59,11 +60,11 @@
 <style>
   .active,
   .active:hover {
-    @apply bg-gray-300;
+    @apply bg-gray-300 rounded;
   }
 
   .heading {
-    @apply text-gray-800 uppercase font-bold whitespace-no-wrap mb-1;
+    @apply text-gray-800 uppercase font-bold whitespace-no-wrap mb-1 px-4;
   }
 
   .black {
@@ -71,7 +72,7 @@
   }
 
   .nav {
-    @apply bg-gray-100 px-4 transform duration-300 -translate-x-64 fixed top-0 left-0 shadow-lg h-full bg-white z-50 pt-8 select-none;
+    @apply bg-gray-100 px-4 transform duration-300 -translate-x-64 fixed top-0 left-0 shadow-lg h-full bg-white z-50 pt-16 select-none;
   }
 
   .show {
@@ -97,18 +98,14 @@
           <div class="heading">{link.heading}</div>
         {:else}
           <a on:click={HideWithDelay} href={link.path}>
-            <div class="text-gray-700 hover:text-gray-600 leading-loose">
+            <div
+              class:active={$isActive(link.path)}
+              class="text-gray-700 hover:text-gray-600 leading-loose px-4">
               {link.text}
             </div>
           </a>
         {/if}
       {/each}
-    </div>
-
-    <div class="md:hidden w-full center p-4">
-      <a href="/">
-        <img class="w-12" alt="logo" src="/images/logo-icon.svg" />
-      </a>
     </div>
   </div>
 </div>

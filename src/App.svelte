@@ -44,6 +44,10 @@
     @apply mt-4 mb-2 text-lg uppercase font-bold;
   }
 
+  blockquote {
+    @apply bg-yellow-200 px-8 py-2 m-2 my-4 border shadow text-center;
+  }
+
   .center {
     @apply flex items-center justify-center;
   }

@@ -39,9 +39,10 @@
     <div class="w-full h-full flex flex-row">
       <Nav />
 
-      <div
-        class="relative container p-16 w-full h-full flex-grow overflow-y-auto">
-        <slot />
+      <div class="relative w-full h-full flex-grow overflow-y-auto">
+        <div class="absolute container px-8 md:px-32 py-8">
+          <slot />
+        </div>
       </div>
     </div>
   </div>
