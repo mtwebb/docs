@@ -29,7 +29,7 @@
   }
 
   p {
-    @apply leading-relaxed;
+    @apply leading-relaxed mb-2;
   }
 
   h1 {

@@ -2,7 +2,7 @@
 
 ### Layout
 
-Graphical representation and some fields that can be overriden by Instances.
+Graphical representation and some Values that can be overriden by Instances.
 
 ### Behavior
 
