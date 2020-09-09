@@ -11,6 +11,7 @@
   html {
     overflow: hidden;
     height: 100%;
+    @apply text-gray-800;
   }
 
   body,
@@ -32,7 +33,7 @@
   }
 
   h1 {
-    @apply my-2 text-3xl;
+    @apply my-2 text-4xl font-bold;
   }
 
   h2 {
