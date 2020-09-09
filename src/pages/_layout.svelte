@@ -39,7 +39,8 @@
     <div class="w-full h-full flex flex-row">
       <Nav />
 
-      <div class="relative w-full h-full flex-grow overflow-y-auto p-8">
+      <div
+        class="relative container p-16 w-full h-full flex-grow overflow-y-auto">
         <slot />
       </div>
     </div>

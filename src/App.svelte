@@ -20,15 +20,27 @@
   }
 
   img.screenshot {
-    @apply border shadow-lg container mx-auto my-4;
+    @apply border shadow-lg container mx-auto mt-8 mb-16;
   }
 
   img.small {
     @apply m-8;
   }
 
+  p {
+    @apply leading-relaxed;
+  }
+
   h1 {
-    @apply text-2xl;
+    @apply my-2 text-3xl;
+  }
+
+  h2 {
+    @apply my-2 text-xl font-bold;
+  }
+
+  h3 {
+    @apply mt-4 mb-2 text-lg uppercase font-bold;
   }
 
   .center {
