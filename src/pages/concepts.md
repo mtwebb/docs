@@ -20,7 +20,7 @@ A collection of Properties and Actions.
 
 A combination of a Layout and Traits. The Component always contains a default Trait.
 
-### Instance
+### Object
 
 An instantiation of a Component that can override data in the Layout and
 properties / actions in the Trait of the Component.
