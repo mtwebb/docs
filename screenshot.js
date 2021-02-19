@@ -61,7 +61,7 @@ async function Process(node) {
   // Generate Codecept test file.
   let codeceptContents = [
     `Feature("${node.properties.name}")`,
-    `Scenario("${id}", (I) => {`,
+    `Scenario("${id}", ({I}) => {`,
     body,
     `I.saveScreenshot("${id}.png")`,
     `});`,
