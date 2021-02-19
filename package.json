@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "codecept": "HEADLESS=true codeceptjs run --steps",
-    "dev": "npm run clear && run-p routify rollup",
+    "dev": "run-p routify rollup",
+    "dev:clear": "npm run clear && run-p routify rollup",
     "dev:nollup": "run-p routify nollup",
     "clear": "rm -rf dist codecept static/screenshots",
     "build": "npm run clear && routify -b && rollup -c && routify export && workbox injectManifest",

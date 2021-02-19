@@ -51,42 +51,52 @@ async function Process(node) {
   }
 
   // Get hash of the body for a stable filename.
-  const hash = crypto.createHash("md5");
-  hash.update(node.properties.name);
-  hash.update(body);
-  const id = hash.digest("hex");
-  // const id = node.properties.name;
+  let id = node.properties.name;
+
+  if (!id) {
+    const hash = crypto.createHash("md5");
+    hash.update(body);
+    id = hash.digest("hex");
+  }
+
   const codeceptFilename = `${id}.js`;
 
   // Generate Codecept test file.
-  let codeceptContents = [
-    `Feature("${node.properties.name}")`,
+  const codeceptContents = [
+    `Feature("${id}")`,
     `Scenario("${id}", ({I}) => {`,
     body,
     `I.saveScreenshot("${id}.png")`,
     `});`,
   ].join("\n");
 
-  // Write file.
-  fs.writeFileSync(path.join(codeceptDir, codeceptFilename), codeceptContents);
+  // Replace <screenshot> tag with an <img> pointing to a screenshot
+  // image that we generate from the Codecept test file.
+  const imgSrc = path.join(imgDir, id);
+  const result = h("img", {
+    alt: node.properties.name,
+    src: `${imgSrc}.png`,
+    class: "screenshot",
+  });
+
+  // If the file exists with identical content, then assume that the
+  // image was already generated and return the image tag right away.
+  const codeceptFilePath = path.join(codeceptDir, codeceptFilename);
+  try {
+    const existing = fs.readFileSync(codeceptFilePath, { encoding: "utf8" });
+    if (codeceptContents === existing) {
+      return result;
+    }
+  } catch (_) {}
+
+  // Otherwise, write file ..
+  fs.writeFileSync(codeceptFilePath, codeceptContents);
 
   return new Promise((resolve) => {
-    // Run Codecept.
-    const cmd = spawn("npm run codecept", { shell: true });
+    // .. and run Codecept.
+    const cmd = spawn(`npm run codecept -- --grep=${id}`, { shell: true });
     cmd.stdout.on("data", (data) => console.log(data.toString()));
     cmd.stderr.on("data", (data) => console.log(data.toString()));
-
-    cmd.on("exit", () => {
-      // Replace <screenshot> tag with an <img> pointing to a screenshot
-      // image that we generate from the Codecept test file.
-      const imgSrc = path.join(imgDir, id);
-      const result = h("img", {
-        alt: node.properties.name,
-        src: `${imgSrc}.png`,
-        class: "screenshot",
-      });
-
-      resolve(result);
-    });
+    cmd.on("exit", () => resolve(result));
   });
 }
