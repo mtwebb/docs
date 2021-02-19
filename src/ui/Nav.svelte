@@ -64,7 +64,7 @@
   }
 
   .heading {
-    @apply text-gray-800 uppercase font-bold whitespace-no-wrap mb-1 px-4;
+    @apply text-gray-800 uppercase font-bold whitespace-nowrap mb-1 px-4;
   }
 
   .black {

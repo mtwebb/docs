@@ -20,7 +20,9 @@ export const config = {
         rehypePlugins: [screenshot],
       }),
       autoPreprocess({
-        postcss: true,
+        postcss: {
+          plugins: [require("tailwindcss"), require("autoprefixer")],
+        },
       }),
     ];
   },
