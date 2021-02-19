@@ -18,12 +18,24 @@
     height: 100%;
   }
 
+  p a, li a {
+    @apply underline;
+  }
+
+  .circle {
+    @apply rounded-full bg-black mr-2 text-white font-bold w-8 h-8 flex items-center justify-center;
+  }
+
   img.screenshot {
     @apply border shadow-lg container mx-auto mt-8 mb-16;
   }
 
   img.small {
     @apply m-8;
+  }
+
+  li {
+    @apply flex flex-row items-center mb-2;
   }
 
   p {
@@ -35,7 +47,7 @@
   }
 
   h2 {
-    @apply my-2 text-xl font-bold;
+    @apply my-2 text-2xl font-bold;
   }
 
   h3 {
