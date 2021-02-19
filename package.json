@@ -2,7 +2,8 @@
   "name": "@boardgamelab/docs",
   "version": "1.0.0",
   "scripts": {
-    "codecept": "HEADLESS=true codeceptjs run --steps",
+    "codecept": "codeceptjs run --steps",
+    "codecept:headless": "HEADLESS=true codeceptjs run --steps",
     "dev": "run-p routify rollup",
     "dev:clear": "npm run clear && run-p routify rollup",
     "dev:nollup": "run-p routify nollup",

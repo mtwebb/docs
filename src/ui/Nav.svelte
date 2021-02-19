@@ -8,17 +8,19 @@
     { path: "/tutorial", text: "Tutorial" },
     null,
     { heading: "Editor" },
-    { path: "/game", text: "Layout" },
-    { path: "/play", text: "Data" },
+    { path: "/layout", text: "Layout" },
+    { path: "/layers", text: "Layers" },
+    { path: "/data", text: "Data" },
     null,
     { heading: "Playtesting" },
-    { path: "/play", text: "Interface" },
-    { path: "/play", text: "Multiplayer" },
+    { path: "/interface", text: "Interface" },
+    { path: "/multiplayer", text: "Multiplayer" },
     null,
     { heading: "Automation" },
+    { path: "/properties", text: "Properties" },
     { path: "/behaviors", text: "Behaviors" },
+    { path: "/traits", text: "Traits" },
     { path: "/attributes", text: "Turn Orders" },
-    { path: "/attributes", text: "Rules" },
   ];
 
   let hamburger;
@@ -60,7 +62,7 @@
 <style>
   .active,
   .active:hover {
-    @apply bg-gray-300 rounded;
+    @apply bg-gray-300;
   }
 
   .heading {
@@ -100,7 +102,7 @@
           <a on:click={HideWithDelay} href={link.path}>
             <div
               class:active={$isActive(link.path)}
-              class="text-gray-700 hover:text-gray-600 leading-loose px-4">
+              class="text-gray-700 hover:bg-gray-200 rounded leading-loose px-4">
               {link.text}
             </div>
           </a>

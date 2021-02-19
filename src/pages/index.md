@@ -6,7 +6,7 @@
 </screenshot>
 
 Boardgame Lab is a browser-based tool that allows you to prototype and playtest
-tabletop games online with a strong emphasis on automation.
+tabletop games online.
 
 ### Prototyping
 

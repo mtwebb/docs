@@ -7,6 +7,9 @@ exports.config = {
       show: !process.env.HEADLESS,
       browser: process.env.BROWSER || "chromium",
     },
+    Highlighter: {
+      require: "./highlighter_helper",
+    },
   },
   bootstrap: null,
   mocha: {},

@@ -64,7 +64,7 @@ async function Process(node) {
   // Generate Codecept test file.
   const codeceptContents = [
     `Feature("${id}")`,
-    `Scenario("${id}", ({I}) => {`,
+    `Scenario("${id}", async ({I}) => {`,
     body,
     `I.saveScreenshot("${id}.png")`,
     `});`,
@@ -74,7 +74,7 @@ async function Process(node) {
   // image that we generate from the Codecept test file.
   const imgSrc = path.join(imgDir, id);
   const result = h("img", {
-    alt: node.properties.name,
+    alt: "screenshot",
     src: `${imgSrc}.png`,
     class: "screenshot",
   });
@@ -94,7 +94,9 @@ async function Process(node) {
 
   return new Promise((resolve) => {
     // .. and run Codecept.
-    const cmd = spawn(`npm run codecept -- --grep=${id}`, { shell: true });
+    const cmd = spawn(`npm run codecept:headless -- --grep=${id}`, {
+      shell: true,
+    });
     cmd.stdout.on("data", (data) => console.log(data.toString()));
     cmd.stderr.on("data", (data) => console.log(data.toString()));
     cmd.on("exit", () => resolve(result));

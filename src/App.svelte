@@ -27,7 +27,7 @@
   }
 
   p {
-    @apply leading-relaxed mb-2 text-lg;
+    @apply leading-relaxed mb-2;
   }
 
   h1 {
