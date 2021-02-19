@@ -4,8 +4,6 @@
 </script>
 
 <style global>
-  @import url("https://fonts.googleapis.com/css?family=Karla|Roboto+Mono&display=swap");
-
   @tailwind base;
 
   html {
@@ -29,7 +27,7 @@
   }
 
   p {
-    @apply leading-relaxed mb-2;
+    @apply leading-relaxed mb-2 text-lg;
   }
 
   h1 {
@@ -41,11 +39,11 @@
   }
 
   h3 {
-    @apply mt-4 mb-2 text-lg uppercase font-bold;
+    @apply mt-4 mb-2 text-lg font-bold;
   }
 
   blockquote {
-    @apply bg-yellow-200 px-8 py-2 m-2 my-4 border shadow text-center;
+    @apply bg-yellow-200 px-8 py-2 m-2 my-4 border rounded shadow text-center;
   }
 
   .center {

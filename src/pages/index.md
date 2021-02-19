@@ -5,10 +5,8 @@
   I.click('[data-testid=template]')
 </screenshot>
 
-# About
-
-Boardgame Lab is a browser-based tool that allows you to create and play
-board games online.
+Boardgame Lab is a browser-based tool that allows you to prototype and playtest
+tabletop games online with a strong emphasis on automation.
 
 ### Prototyping
 
