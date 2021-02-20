@@ -33,8 +33,13 @@ export default () => {
     // Process any <screenshot> tags.
     for (let i = 0; i < tree.children.length; i++) {
       const node = tree.children[i];
+
       if (node.tagName === "screenshot") {
-        tree.children[i] = await Process(node);
+        tree.children[i] = await ProcessScreenshot(node);
+      }
+
+      if (node.tagName === "carousel") {
+        tree.children[i] = await ProcessCarousel(node);
       }
     }
 
@@ -42,7 +47,23 @@ export default () => {
   };
 };
 
-async function Process(node) {
+async function ProcessCarousel(node) {
+  let children = [];
+
+  for (let i = 0; i < node.children.length; i++) {
+    const child = node.children[i];
+
+    if (child.tagName === "screenshot") {
+      const img = await ProcessScreenshot(child);
+      const wrapper = h("div", { class: "carousel-item" }, img);
+      children.push(wrapper);
+    }
+  }
+
+  return h("div", { class: "carousel" }, children);
+}
+
+async function ProcessScreenshot(node) {
   // Body of <screenshot> tag containing Codecept code.
   const body = toString(node);
 

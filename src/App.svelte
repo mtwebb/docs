@@ -26,6 +26,14 @@
     @apply rounded-full bg-black mr-2 text-white font-bold w-8 h-8 flex items-center justify-center;
   }
 
+  .carousel {
+    @apply grid;
+  }
+
+  .carousel-item {
+    @apply col-start-1 row-start-1;
+  }
+
   img.screenshot {
     @apply border shadow-lg container mx-auto mt-8 mb-16;
   }
