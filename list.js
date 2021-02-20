@@ -41,8 +41,8 @@ export default () => {
 };
 
 function Process(li, index) {
-  return h("li", [
+  return h("li", { class: "bullet-point" }, [
     h("div", { class: "circle" }, index + ""),
-    h("span", li.children),
+    h("div", { class: "content" }, li.children),
   ]);
 }

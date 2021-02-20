@@ -30,7 +30,6 @@ export default () => {
     // Parse raw nodes.
     tree = raw(tree);
 
-    // Process any <screenshot> tags.
     for (let i = 0; i < tree.children.length; i++) {
       const node = tree.children[i];
 
