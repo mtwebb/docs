@@ -24,10 +24,14 @@
 
   .carousel {
     @apply grid;
-  }
 
-  .carousel img {
-    @apply col-start-1 row-start-1;
+    img {
+      @apply col-start-1 row-start-1 invisible;
+    }
+
+    img.active {
+      @apply visible;
+    }
   }
 
   img.screenshot {
@@ -39,15 +43,19 @@
   }
 
   .bullet-point {
-    @apply flex flex-row items-start mb-2 hover:bg-gray-100 p-2;
-  }
+    @apply flex flex-row items-start mb-2 p-2;
 
-  .bullet-point .circle {
-    @apply rounded-full flex-shrink-0 bg-black mr-2 text-white font-bold w-8 h-8 flex items-center justify-center;
-  }
+    .circle {
+      @apply rounded-full flex-shrink-0 bg-gray-600 mr-2 text-white font-bold w-8 h-8 flex items-center justify-center;
+    }
 
-  .bullet-point .content {
-    @apply mt-1;
+    &.active .circle {
+      @apply bg-black;
+    }
+
+    .content {
+      @apply mt-1;
+    }
   }
 
   p {

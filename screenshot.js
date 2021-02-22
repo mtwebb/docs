@@ -70,6 +70,9 @@ function ProcessCarousel(node) {
   let index = 0;
   node.children.forEach((child) => {
     if (child.tagName === "img") {
+      if (index === 0) {
+        child.properties.className.push("active");
+      }
       child.properties["data-index"] = index++;
     }
   });
@@ -114,7 +117,7 @@ async function ProcessScreenshot(node) {
   const result = h("img", {
     alt: "screenshot",
     src: `${imgSrc}.png`,
-    class: "screenshot",
+    className: ["screenshot"],
   });
 
   // If the file exists with identical content, then assume that the

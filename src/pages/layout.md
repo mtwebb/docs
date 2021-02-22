@@ -8,6 +8,7 @@
   <screenshot>
     I.amOnPage('/')
     I.click('Components')
+    await I.arrow('[title="new component"]', { direction: "right" })
   </screenshot>
 
   <screenshot>

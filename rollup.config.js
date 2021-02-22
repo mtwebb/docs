@@ -23,7 +23,11 @@ export const config = {
       }),
       autoPreprocess({
         postcss: {
-          plugins: [require("tailwindcss"), require("autoprefixer")],
+          plugins: [
+            require("tailwindcss"),
+            require("postcss-nested"),
+            require("autoprefixer"),
+          ],
         },
       }),
     ];
