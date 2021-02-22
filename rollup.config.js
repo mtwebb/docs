@@ -1,6 +1,7 @@
 import { createRollupConfigs } from "./scripts/base.config.js";
 import autoPreprocess from "svelte-preprocess";
 import { mdsvex } from "mdsvex";
+import raw from "rehype-raw";
 import screenshot from "./screenshot";
 import list from "./list";
 
@@ -18,7 +19,7 @@ export const config = {
     svelte.preprocess = [
       mdsvex({
         extension: ".md",
-        rehypePlugins: [screenshot, list],
+        rehypePlugins: [raw, screenshot, list],
       }),
       autoPreprocess({
         postcss: {

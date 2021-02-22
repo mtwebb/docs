@@ -15,14 +15,13 @@
  */
 
 import h from "hastscript";
+import visit from "unist-util-visit";
 
 export default () => {
   return async (tree) => {
-    // Process any <ol> tags.
-    for (let i = 0; i < tree.children.length; i++) {
-      const node = tree.children[i];
+    visit(tree, "element", (node) => {
       if (node.tagName === "ol") {
-        let index = 1;
+        let index = 0;
         for (let j = 0; j < node.children.length; j++) {
           const child = node.children[j];
           if (child.tagName === "li") {
@@ -30,15 +29,15 @@ export default () => {
           }
         }
       }
-    }
+    });
 
     return tree;
   };
 };
 
 function Process(li, index) {
-  return h("li", { class: "bullet-point" }, [
-    h("div", { class: "circle", "data-index": index }, index + ""),
+  return h("li", { class: "bullet-point", "data-index": index }, [
+    h("div", { class: "circle" }, index + 1 + ""),
     h("div", { class: "content" }, li.children),
   ]);
 }

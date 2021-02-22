@@ -26,7 +26,7 @@
     @apply grid;
   }
 
-  .carousel-item {
+  .carousel img {
     @apply col-start-1 row-start-1;
   }
 

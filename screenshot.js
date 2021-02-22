@@ -18,48 +18,66 @@ import fs from "fs";
 import path from "path";
 import crypto from "crypto";
 import h from "hastscript";
-import raw from "hast-util-raw";
+import u from "unist-builder";
 import toString from "hast-util-to-string";
+import toHTML from "hast-util-to-html";
 import { spawn } from "child_process";
+import visit from "unist-util-visit";
 
 const codeceptDir = "codecept";
 const imgDir = "/screenshots";
 
 export default () => {
   return async (tree) => {
-    // Parse raw nodes.
-    tree = raw(tree);
+    let screenshots = [];
+    let carousels = [];
 
-    for (let i = 0; i < tree.children.length; i++) {
-      const node = tree.children[i];
-
+    visit(tree, "element", async (node, i, parent) => {
       if (node.tagName === "screenshot") {
-        tree.children[i] = await ProcessScreenshot(node);
+        screenshots.push({
+          node,
+          i,
+          parent,
+        });
       }
 
       if (node.tagName === "carousel") {
-        tree.children[i] = await ProcessCarousel(node);
+        carousels.push({
+          node,
+          i,
+          parent,
+        });
       }
+    });
+
+    for (const screenshot of screenshots) {
+      const { node, i, parent } = screenshot;
+      parent.children[i] = await ProcessScreenshot(node);
+    }
+
+    for (const carousel of carousels) {
+      const { node, i, parent } = carousel;
+      parent.children[i] = ProcessCarousel(node);
     }
 
     return tree;
   };
 };
 
-async function ProcessCarousel(node) {
-  let children = [];
+function ProcessCarousel(node) {
+  const id = node.properties.id;
 
-  for (let i = 0; i < node.children.length; i++) {
-    const child = node.children[i];
-
-    if (child.tagName === "screenshot") {
-      const img = await ProcessScreenshot(child);
-      const wrapper = h("div", { class: "carousel-item" }, img);
-      children.push(wrapper);
+  let index = 0;
+  node.children.forEach((child) => {
+    if (child.tagName === "img") {
+      child.properties["data-index"] = index++;
     }
-  }
+  });
 
-  return h("div", { class: "carousel" }, children);
+  return u(
+    "raw",
+    `<Carousel id="${id}">` + toHTML(node.children) + "</Carousel>"
+  );
 }
 
 async function ProcessScreenshot(node) {
