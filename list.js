@@ -15,13 +15,9 @@
  */
 
 import h from "hastscript";
-import raw from "hast-util-raw";
 
 export default () => {
   return async (tree) => {
-    // Parse raw nodes.
-    tree = raw(tree);
-
     // Process any <ol> tags.
     for (let i = 0; i < tree.children.length; i++) {
       const node = tree.children[i];
@@ -42,7 +38,7 @@ export default () => {
 
 function Process(li, index) {
   return h("li", { class: "bullet-point" }, [
-    h("div", { class: "circle" }, index + ""),
+    h("div", { class: "circle", "data-index": index }, index + ""),
     h("div", { class: "content" }, li.children),
   ]);
 }
