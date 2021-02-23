@@ -20,13 +20,11 @@ of the card.
 Every component has a default set of Behaviors. For example, a deck can be shuffled.
 However, games often require further customization. You might want a deck to be replenished
 and shuffled once it runs out, say. These sorts of complex interactions are created by attaching
-new Behaviors to Components.
-
-> Note that you don't have to write any code to create a new Behavior.
+new Behaviors to Components. Note that you don't have to write any code to create a new Behavior.
 
 ### Trait
 
-A Trait is like a partial component. It is also a collection of Properties, Behaviors
+A Trait is like a partially fleshed out component. It is also a collection of Properties, Behaviors
 and layout. It can be used to store things that are shared across multiple Components.
 For example, your game might have cards and hex tiles that both have a cost Property
 and an associated Behavior that determines how the object is purchased. One option would

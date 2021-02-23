@@ -6,13 +6,11 @@
 
 <Carousel id="create-new-component">
   <screenshot>
-    I.amOnPage('/')
     I.click('Components')
     await I.arrow('[title="new component"]', { direction: "right" })
   </screenshot>
 
   <screenshot>
-    I.amOnPage('/')
     I.click('Components')
     I.click('[title="new component"]')
   </screenshot>

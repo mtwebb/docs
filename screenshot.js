@@ -106,6 +106,7 @@ async function ProcessScreenshot(node) {
   const codeceptContents = [
     `Feature("${id}")`,
     `Scenario("${id}", async ({I}) => {`,
+    `I.amOnPage('/')`,
     body,
     `I.saveScreenshot("${id}.png")`,
     `});`,
