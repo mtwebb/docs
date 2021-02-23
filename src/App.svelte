@@ -46,11 +46,11 @@
     @apply flex flex-row items-start mb-2 p-2;
 
     .circle {
-      @apply rounded-full flex-shrink-0 bg-gray-600 mr-2 text-white font-bold w-8 h-8 flex items-center justify-center;
+      @apply cursor-pointer shadow transition rounded-full flex-shrink-0 bg-gray-800 mr-2 text-white font-bold w-8 h-8 flex items-center justify-center;
     }
 
     &.active .circle {
-      @apply bg-black;
+      @apply bg-primary;
     }
 
     .content {
