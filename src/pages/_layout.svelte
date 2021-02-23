@@ -27,13 +27,15 @@
   <div class="w-full h-full flex flex-col">
     <div
       style="min-height: 3rem"
-      class="flex flex-row items-center bg-gray-800 w-full z-10">
+      class="flex flex-row items-center justify-between bg-gray-800 w-full z-10">
       <a href="/">
         <img
           class="hidden md:block w-40 ml-2"
           alt="logo"
           src="/images/logo.svg" />
       </a>
+
+      <h2 class="text-gray-100 mr-4">User Guide</h2>
     </div>
 
     <div class="w-full h-full flex flex-row">
