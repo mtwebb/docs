@@ -131,11 +131,17 @@ async function ProcessScreenshot(node) {
     }
   } catch (_) {}
 
-  // Otherwise, write file ..
+  // Otherwise, write file.
   fs.writeFileSync(codeceptFilePath, codeceptContents);
 
+  // If we're running on Netlify or elsewhere, assume that the screenshots
+  // are generated already.
+  if (process.env.CI) {
+    return result;
+  }
+
+  // Run Codecept.
   return new Promise((resolve) => {
-    // .. and run Codecept.
     const cmd = spawn(`npm run codecept:headless -- --grep=${id}`, {
       shell: true,
     });
