@@ -40,7 +40,7 @@
       <Nav />
 
       <div class="relative w-full h-full flex-grow overflow-y-auto">
-        <div class="absolute container px-8 md:px-32 py-8">
+        <div class="absolute container px-8 md:px-32 py-8 h-full">
           <slot />
         </div>
       </div>
