@@ -4,23 +4,23 @@
 
 Graphical representation of a Component. Consists of one or more layers.
 
-### Action
-
-What would be called a method or function in a programming language (like Buy / Sell).
-
 ### Property
 
 A piece of data.
 
+### Behavior
+
+What would be called a method or function in a programming language (like Buy / Sell).
+
 ### Trait
 
-A collection of Properties and Actions.
+A collection of Properties and Behaviors.
 
 ### Component
 
 A combination of a Layout and Traits. The Component always contains a default Trait.
 
-### Object
+### Instance
 
 An instantiation of a Component that can override data in the Layout and
 properties / actions in the Trait of the Component.
