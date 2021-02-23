@@ -3,7 +3,7 @@
 ### Component
 
 A game object that you can interact with during play (a card, for example).
-A Component can have multiple instances, each slightly different from each other.
+A Component can have multiple instances, each slightly different from the other.
 Components have layouts that determine what they look like.
 They can hold data via Properties. You may also customize how a component behaves
 during play by giving it a Behavior.
