@@ -20,7 +20,7 @@
 </script>
 
 <svelte:head>
-  <title>Boardgame Lab</title>
+  <title>User Guide | Boardgame Lab</title>
 </svelte:head>
 
 <main>
