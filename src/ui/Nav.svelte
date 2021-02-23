@@ -4,8 +4,11 @@
 
   const nav = [
     { heading: "Getting Started" },
+    { path: "/index", text: "Overview" },
     { path: "/concepts", text: "Concepts" },
-    { path: "/tutorial", text: "Tutorial" },
+    null,
+    { heading: "Tutorials" },
+    { path: "/tutorial", text: "Basic" },
     null,
     { heading: "Editor" },
     { path: "/layout", text: "Layout" },
