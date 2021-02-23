@@ -77,7 +77,7 @@
   }
 
   .nav {
-    @apply bg-gray-100 px-4 transform duration-300 -translate-x-64 fixed top-0 left-0 shadow-lg h-full bg-white z-50 py-16 select-none overflow-y-auto;
+    @apply bg-gray-100 px-4 transform duration-300 -translate-x-64 fixed top-0 left-0 shadow-lg h-full bg-white z-50 py-16 select-none overflow-y-auto w-64;
   }
 
   .show {
