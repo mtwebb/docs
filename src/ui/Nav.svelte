@@ -1,30 +1,7 @@
 <script>
   import { isActive } from "@sveltech/routify";
   import MenuIcon from "svelte-icons/md/MdMenu.svelte";
-
-  const nav = [
-    { heading: "Getting Started" },
-    { path: "/index", text: "Overview" },
-    { path: "/concepts", text: "Concepts" },
-    null,
-    { heading: "Tutorials" },
-    { path: "/tutorial", text: "Basic" },
-    null,
-    { heading: "Editor" },
-    { path: "/layout", text: "Layout" },
-    { path: "/layers", text: "Layers" },
-    { path: "/data", text: "Data" },
-    null,
-    { heading: "Playtesting" },
-    { path: "/interface", text: "Interface" },
-    { path: "/multiplayer", text: "Multiplayer" },
-    null,
-    { heading: "Automation" },
-    { path: "/properties", text: "Properties" },
-    { path: "/behaviors", text: "Behaviors" },
-    { path: "/traits", text: "Traits" },
-    { path: "/attributes", text: "Turn Orders" },
-  ];
+  import routes from "../routes";
 
   let hamburger;
   let show = false;
@@ -96,7 +73,7 @@
 <div data-testid="nav" data-menu="true" class="nav" class:show>
   <div class="h-full flex flex-col justify-between">
     <div class="flex flex-col px-4 md:px-2 w-full">
-      {#each nav as link}
+      {#each routes as link}
         {#if !link}
           <div class="h-6" />
         {:else if link.heading}
