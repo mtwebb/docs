@@ -1,7 +1,11 @@
 <script>
+  import { setContext } from "svelte";
   import { isActive } from "@sveltech/routify";
+  import NavSection from "./NavSection.svelte";
   import MenuIcon from "svelte-icons/md/MdMenu.svelte";
   import routes from "../routes";
+
+  setContext("HideWithDelay", HideWithDelay);
 
   let hamburger;
   let show = false;
@@ -40,15 +44,6 @@
 </script>
 
 <style>
-  .active,
-  .active:hover {
-    @apply bg-gray-300;
-  }
-
-  .heading {
-    @apply text-gray-800 uppercase font-bold whitespace-nowrap mb-1 px-4;
-  }
-
   .black {
     @apply text-gray-800;
   }
@@ -73,20 +68,8 @@
 <div data-testid="nav" data-menu="true" class="nav" class:show>
   <div class="h-full flex flex-col justify-between">
     <div class="flex flex-col px-4 md:px-2 w-full">
-      {#each routes as link}
-        {#if !link}
-          <div class="h-6" />
-        {:else if link.heading}
-          <div class="heading">{link.heading}</div>
-        {:else}
-          <a on:click={HideWithDelay} href={link.path}>
-            <div
-              class:active={$isActive(link.path)}
-              class="text-gray-700 hover:bg-gray-200 rounded leading-loose px-4">
-              {link.text}
-            </div>
-          </a>
-        {/if}
+      {#each routes as section}
+        <NavSection {section} />
       {/each}
     </div>
   </div>
