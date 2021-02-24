@@ -5,17 +5,13 @@ function IsRoutifyInternalFile(entry) {
     return false;
   }
 
-  return (
-    entry.name === "_fallback" ||
-    entry.name === "_layout" ||
-    entry.name === "index"
-  );
+  return entry.isReset || entry.isLayout || entry.isIndex || entry.isFallback;
 }
 
 function ProcessDir(entry) {
   return {
     text: GetText(entry),
-    path: entry.name,
+    path: entry.path,
     children: entry.children
       .filter((c) => !IsRoutifyInternalFile(c))
       .sort(Sort)
@@ -25,7 +21,7 @@ function ProcessDir(entry) {
 
 function ProcessFile(entry) {
   return {
-    path: entry.name,
+    path: entry.path,
     text: GetText(entry),
   };
 }
@@ -36,13 +32,14 @@ function GetText(entry) {
     return frontmatter.text;
   }
 
-  let t = entry.name.replace(/[_-]/g, " ");
+  const split = entry.path.split("/");
+  let t = split[split.length - 1].replace(/\//, "").replace(/[_-]/g, " ");
   return t.charAt(0).toUpperCase() + t.slice(1);
 }
 
 function GetFrontmatter(entry) {
   if (entry.isDir) {
-    const index = entry.children.filter((c) => c.name === "index")[0];
+    const index = entry.children.filter((c) => c.isIndex)[0];
     return index && index.meta && index.meta.frontmatter;
   }
 
@@ -77,7 +74,7 @@ export default [
     expand: true,
     path: "",
     children: tree.children
-      .filter((entry) => entry.isFile && !IsRoutifyInternalFile(entry))
+      .filter((entry) => entry.isPage && !IsRoutifyInternalFile(entry))
       .sort(Sort)
       .map(ProcessFile),
   },

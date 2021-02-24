@@ -1,17 +1,15 @@
 <script>
-  export let pathPrefix = [];
   export let section;
   export let level = 0;
 
-  import { isActive, url } from "@roxi/routify";
+  import { isActive } from "@roxi/routify";
   import { getContext } from "svelte";
   import MdKeyboardArrowRight from "svelte-icons/md/MdKeyboardArrowRight.svelte";
   import MdKeyboardArrowDown from "svelte-icons/md/MdKeyboardArrowDown.svelte";
 
   const HideWithDelay = getContext("HideWithDelay");
 
-  const path = [...pathPrefix, section.path];
-  const href = "/" + path.filter((p) => p).join("/");
+  const href = section.path;
 
   let expanded = section.expand || false;
   $: leaf = section.children === undefined;
@@ -93,7 +91,7 @@
   <div class:indent={level === 1}>
     {#if expanded}
       {#each section.children as child}
-        <svelte:self section={child} level={level + 1} pathPrefix={path} />
+        <svelte:self section={child} level={level + 1} />
       {/each}
     {/if}
   </div>
