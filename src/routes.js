@@ -1,10 +1,14 @@
 import { tree } from "../.routify/routes";
 
 function IsRoutifyInternalFile(entry) {
+  if (entry.meta.frontmatter && entry.meta.frontmatter.ignore === false) {
+    return false;
+  }
+
   return (
     entry.name === "_fallback" ||
     entry.name === "_layout" ||
-    (entry.name === "index" && !entry.meta.frontmatter)
+    entry.name === "index"
   );
 }
 
@@ -27,17 +31,30 @@ function ProcessFile(entry) {
 }
 
 function GetText(entry) {
-  if (entry.meta.frontmatter) {
-    return entry.meta.frontmatter.text;
+  const frontmatter = GetFrontmatter(entry);
+  if (frontmatter && frontmatter.text) {
+    return frontmatter.text;
   }
 
   let t = entry.name.replace(/[_-]/g, " ");
   return t.charAt(0).toUpperCase() + t.slice(1);
 }
 
+function GetFrontmatter(entry) {
+  if (entry.isDir) {
+    const index = entry.children.filter((c) => c.name === "index")[0];
+    return index && index.meta && index.meta.frontmatter;
+  }
+
+  return entry && entry.meta && entry.meta.frontmatter;
+}
+
 function Sort(a, b) {
-  const ai = a.meta && a.meta.frontmatter && a.meta.frontmatter.index;
-  const bi = b.meta && b.meta.frontmatter && b.meta.frontmatter.index;
+  const af = GetFrontmatter(a);
+  const bf = GetFrontmatter(b);
+
+  const ai = af && af.index;
+  const bi = bf && bf.index;
 
   if (ai === undefined && bi === undefined) {
     return 0;
@@ -65,7 +82,10 @@ export default [
       .map(ProcessFile),
   },
 
-  ...tree.children.filter((entry) => entry.isDir).map(ProcessDir),
+  ...tree.children
+    .filter((entry) => entry.isDir)
+    .sort(Sort)
+    .map(ProcessDir),
 ];
 
 /*

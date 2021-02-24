@@ -17,4 +17,4 @@
 </Carousel>
 
 1. Click on the **New Component** button at the bottom right of the screen.
-1. Choose the type of component that you want to create from the next screen. Learn about the different types of components [here]().
+1. Choose the type of component that you want to create from the next screen.
