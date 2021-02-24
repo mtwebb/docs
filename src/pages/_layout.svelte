@@ -1,6 +1,6 @@
 <script>
   import Nav from "../ui/Nav.svelte";
-  import { beforeUrlChange, afterPageLoad } from "@sveltech/routify";
+  import { beforeUrlChange, afterPageLoad } from "@roxi/routify";
 
   let loading = false;
   let loadingTimeout = null;

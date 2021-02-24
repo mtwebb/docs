@@ -3,7 +3,7 @@
   export let section;
   export let level = 0;
 
-  import { isActive } from "@sveltech/routify";
+  import { isActive } from "@roxi/routify";
   import { getContext } from "svelte";
 
   const HideWithDelay = getContext("HideWithDelay");
