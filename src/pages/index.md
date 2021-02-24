@@ -1,3 +1,8 @@
+---
+text: "Overview"
+index: 0
+---
+
 <screenshot name="main">
   I.click('Components')
   I.pressKey('c')

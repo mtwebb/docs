@@ -1,3 +1,7 @@
+---
+text: "Concepts"
+---
+
 # Concepts
 
 ### Component
