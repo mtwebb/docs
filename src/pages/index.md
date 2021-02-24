@@ -10,21 +10,21 @@ index: 0
   I.click('[data-testid=template]')
 </screenshot>
 
-Boardgame Lab is a browser-based tool that allows you to prototype and playtest
+Boardgame Lab is a platform that allows you to prototype and playtest
 tabletop games online.
 
 ### Prototyping
 
-The built-in editor allows you to create and edit layouts on the fly (even mid-game).
+The built-in layout editor allows you to create and edit layouts on the fly (even mid-game).
 Components are created by joining these layouts with data from a spreadsheet, allowing
-you to create create hundreds of components in minutes. Edits to a layout are applied
+you to create hundreds of components in minutes. Edits to a layout are applied
 automatically to all components that inherit from it immediately, saving you precious
 time while experimenting with your game design.
 
 ### Playtesting
 
-Playtest by simply sharing a link (no account required for your playtesters). The
-platform works on all platforms, including mobile devices with tiny screens.
+Playtest by simply sharing a link (no account required for your playtesters). Boardgame Lab
+works on all platforms, including mobile devices with tiny screens.
 
 ### Automation
 
