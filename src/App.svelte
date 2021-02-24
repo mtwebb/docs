@@ -18,8 +18,13 @@
     height: 100%;
   }
 
-  p a, li a {
+  p a,
+  li a {
     @apply underline;
+  }
+
+  .center {
+    @apply flex items-center justify-center;
   }
 
   .carousel {
