@@ -54,3 +54,61 @@ and one for the **back**.
 </screenshot>
 
 Click on the front face to start customizing it.
+You'll notice that the card already has some layout elements.
+
+<Carousel play={false}>
+  <screenshot of="#workspace">
+    I.click('Components')
+    I.click('[title="new component"]')
+    I.click('[data-type=card]')
+    I.click('[data-testid=template]:first-child')
+    I.click('.face')
+    await I.highlight('[data-tool=image]')
+    await I.arrowLeft('[data-tool=image]')
+  </screenshot>
+
+  <screenshot of="#workspace">
+    I.click('Components')
+    I.click('[title="new component"]')
+    I.click('[data-type=card]')
+    I.click('[data-testid=template]:first-child')
+    I.click('.face')
+    I.click('[data-tool=image]')
+    I.fillField('[data-widget=x]', 65)
+    I.fillField('[data-widget=y]', 340)
+    I.fillField('[data-widget=width]', 500)
+    I.fillField('[data-widget=height]', 500)
+    await I.highlight('[data-widget=image]')
+    await I.arrowRight('[data-widget=image]')
+  </screenshot>
+
+  <screenshot>
+    I.click('Components')
+    I.click('[title="new component"]')
+    I.click('[data-type=card]')
+    I.click('[data-testid=template]:first-child')
+    I.click('.face')
+    I.click('[data-tool=image]')
+    I.click('[data-widget=image]')
+  </screenshot>
+
+  <screenshot>
+    I.click('Components')
+    I.click('[title="new component"]')
+    I.click('[data-type=card]')
+    I.click('[data-testid=template]:first-child')
+    I.click('.face')
+    I.click('[data-tool=image]')
+    I.fillField('[data-widget=x]', 65)
+    I.fillField('[data-widget=y]', 340)
+    I.fillField('[data-widget=width]', 500)
+    I.fillField('[data-widget=height]', 500)
+    I.click('[data-widget=image]')
+    I.click('[alt="Asset 16"]')
+  </screenshot>
+</Carousel>
+
+1. Click on the **Image** tool to add a new image.
+1. Click on the **Asset Browser** to select the image that you want to add.
+1. Select an image from the one of the assets. Boardgame Lab comes with hundreds of stock images that you can use in your prototypes before you develop art for your game.
+1. Reposition.

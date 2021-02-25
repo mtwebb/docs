@@ -102,13 +102,19 @@ async function ProcessScreenshot(node) {
 
   const codeceptFilename = `${id}.js`;
 
+  let screenshotCmd = `I.saveScreenshot("${id}.png")`;
+
+  if (node.properties.of) {
+    screenshotCmd = `I.saveElementScreenshot("${node.properties.of}", "${id}.png")`;
+  }
+
   // Generate Codecept test file.
   const codeceptContents = [
     `Feature("${id}")`,
     `Scenario("${id}", async ({I}) => {`,
     `I.amOnPage('/')`,
     body,
-    `I.saveScreenshot("${id}.png")`,
+    screenshotCmd,
     `});`,
   ].join("\n");
 
