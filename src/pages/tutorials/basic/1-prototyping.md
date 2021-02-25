@@ -1,5 +1,5 @@
 ---
-text: "Create a Layout"
+text: "Prototyping"
 ---
 
 <script>
