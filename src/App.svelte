@@ -27,6 +27,11 @@
     @apply underline;
   }
 
+  ul,
+  ol {
+    @apply mb-8;
+  }
+
   .center {
     @apply flex items-center justify-center;
   }

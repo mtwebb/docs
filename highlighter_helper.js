@@ -39,6 +39,22 @@ class Highlighter extends Helper {
     );
   }
 
+  async arrowLeft(locator) {
+    return this.arrow(locator, { direction: "left" });
+  }
+
+  async arrowRight(locator) {
+    return this.arrow(locator, { direction: "right" });
+  }
+
+  async arrowDown(locator) {
+    return this.arrow(locator, { direction: "down" });
+  }
+
+  async arrowUp(locator) {
+    return this.arrow(locator, { direction: "up" });
+  }
+
   async arrow(locator, opts = {}) {
     const { Playwright } = this.helpers;
     const { page } = Playwright;
