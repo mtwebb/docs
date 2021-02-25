@@ -117,8 +117,7 @@ Let's add an image to this card.
 1. Select an image from the one of the assets. Boardgame Lab comes with hundreds of stock images that you can use in your prototypes before you develop art for your game.
 1. Click on the close button (or press **Escape**) to exit the layout editor.
 
-Our finished card should look something like this. In the next tutorial we shall explore how to connect this
-layout to a spreadsheet to spawn dozens of variants of this card really quickly.
+Our finished card should look something like this.
 
 <screenshot of=".face" width="200">
   I.click('Components')
@@ -135,3 +134,11 @@ layout to a spreadsheet to spawn dozens of variants of this card really quickly.
   I.click('[alt="Asset 16"]')
   I.click('[data-close=true]')
 </screenshot>
+
+---
+
+## Connecting the layout to data
+
+Now let's look at how we can spawn multiple instances of this component using data from a spreadsheet.
+
+> Work in progress
