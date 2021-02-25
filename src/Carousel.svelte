@@ -1,6 +1,8 @@
 <script>
   import { onMount } from "svelte";
 
+  export let play = true;
+
   let ref;
   let itemCount = null;
   let current = null;
@@ -19,7 +21,9 @@
 
     ActivateIndex(0);
 
-    interval = setInterval(Tick, 2000);
+    if (play) {
+      interval = setInterval(Tick, 2000);
+    }
 
     return () => {
       clearInterval(interval);
@@ -45,16 +49,20 @@
     if (!img) {
       return;
     }
-    ref.querySelectorAll("img").forEach(img => {
+    ref.querySelectorAll("img").forEach((img) => {
       img.classList.remove("active");
     });
     img.classList.add("active");
 
-    const activeListItem = ref.nextElementSibling.querySelector(`li[data-index="${index}"]`);
+    const activeListItem = ref.nextElementSibling.querySelector(
+      `li[data-index="${index}"]`
+    );
     if (!activeListItem) {
       return;
     }
-    ref.nextElementSibling.querySelectorAll("li").forEach(li => li.classList.remove("active"));
+    ref.nextElementSibling
+      .querySelectorAll("li")
+      .forEach((li) => li.classList.remove("active"));
     activeListItem.classList.add("active");
 
     current = index;
@@ -68,5 +76,5 @@
 </script>
 
 <div class="carousel" bind:this={ref}>
-  <slot/>
+  <slot />
 </div>

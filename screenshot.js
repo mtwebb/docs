@@ -65,7 +65,7 @@ export default () => {
 };
 
 function ProcessCarousel(node) {
-  const id = node.properties.id;
+  const play = node.properties.play;
 
   let index = 0;
   node.children.forEach((child) => {
@@ -79,7 +79,7 @@ function ProcessCarousel(node) {
 
   return u(
     "raw",
-    `<Carousel id="${id}">` + toHTML(node.children) + "</Carousel>"
+    `<Carousel play=${play}>` + toHTML(node.children) + "</Carousel>"
   );
 }
 

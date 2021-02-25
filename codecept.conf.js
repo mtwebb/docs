@@ -3,7 +3,7 @@ exports.config = {
   output: "static/screenshots",
   helpers: {
     Playwright: {
-      url: "http://localhost:8000",
+      url: "http://localhost:5000",
       show: !process.env.HEADLESS,
       browser: process.env.BROWSER || "chromium",
     },
@@ -17,6 +17,9 @@ exports.config = {
   plugins: {
     retryFailedStep: {
       enabled: true,
+    },
+    screenshotOnFail: {
+      enabled: false,
     },
   },
 };

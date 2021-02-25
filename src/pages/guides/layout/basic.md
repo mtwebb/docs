@@ -4,7 +4,7 @@
 
 ## Creating a new component
 
-<Carousel id="create-new-component">
+<Carousel>
   <screenshot>
     I.click('Components')
     await I.arrow('[title="new component"]', { direction: "right" })

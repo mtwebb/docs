@@ -11,6 +11,7 @@ import replace from "@rollup/plugin-replace";
 import { spassr } from "spassr";
 
 const isNollup = !!process.env.NOLLUP;
+const assetsDir = "static";
 
 export function createRollupConfigs(config) {
   const { production, serve, distDir } = config;
@@ -19,12 +20,14 @@ export function createRollupConfigs(config) {
 
   del.sync(distDir + "/**"); // clear previous builds
 
-  if (serve && !isNollup)
-    spassr({
-      serveSpa: true, // serve app
-      serveSsr: !isNollup, // Nollup doesn't need SSR
-      silent: isNollup, // Nollup needs Spassr internally
-    });
+  if (serve && !isNollup) {
+    const options = {
+      assetsDir: [assetsDir, distDir],
+      entrypoint: `${assetsDir}/__app.html`,
+      script: `${distDir}/build/main.js`,
+    };
+    spassr({ ...options, port: 8000 });
+  }
 
   // Combine configs as needed
   return [

@@ -18,6 +18,10 @@
     height: 100%;
   }
 
+  hr {
+    @apply my-4;
+  }
+
   p a,
   li a {
     @apply underline;
