@@ -8,7 +8,7 @@ exports.config = {
       browser: process.env.BROWSER || "chromium",
     },
     Highlighter: {
-      require: "./highlighter_helper",
+      require: "./helpers/highlighter",
     },
   },
   bootstrap: null,

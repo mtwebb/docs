@@ -142,7 +142,7 @@ async function ProcessScreenshot(node) {
   fs.writeFileSync(codeceptFilePath, codeceptContents);
 
   // If we're running on Netlify or elsewhere, assume that the screenshots
-  // are generated already.
+  // are generated separately.
   if (process.env.CI) {
     return result;
   }
