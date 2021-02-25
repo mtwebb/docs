@@ -54,7 +54,10 @@ and one for the **back**.
 </screenshot>
 
 Click on the front face to start customizing it.
-You'll notice that the card already has some layout elements.
+You'll notice that the card already has some layout elements (a colored rectangle and a text field).
+The text field has a **Title** property inside it. Don't worry about it for now.
+
+Let's add an image to this card.
 
 <Carousel play={false}>
   <screenshot of="#workspace">
@@ -113,3 +116,22 @@ You'll notice that the card already has some layout elements.
 1. Click on the **Asset Browser** to select the image that you want to add.
 1. Select an image from the one of the assets. Boardgame Lab comes with hundreds of stock images that you can use in your prototypes before you develop art for your game.
 1. Click on the close button (or press **Escape**) to exit the layout editor.
+
+Our finished card should look something like this. In the next tutorial we shall explore how to connect this
+layout to a spreadsheet to spawn dozens of variants of this card really quickly.
+
+<screenshot of=".face" width="200">
+  I.click('Components')
+  I.click('[title="new component"]')
+  I.click('[data-type=card]')
+  I.click('[data-testid=template]:first-child')
+  I.click('.face')
+  I.click('[data-tool=image]')
+  I.fillField('[data-widget=x]', 65)
+  I.fillField('[data-widget=y]', 340)
+  I.fillField('[data-widget=width]', 500)
+  I.fillField('[data-widget=height]', 500)
+  I.click('[data-widget=image]')
+  I.click('[alt="Asset 16"]')
+  I.click('[data-close=true]')
+</screenshot>

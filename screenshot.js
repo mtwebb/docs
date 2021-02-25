@@ -125,6 +125,7 @@ async function ProcessScreenshot(node) {
     alt: "screenshot",
     src: `${imgSrc}.png`,
     className: ["screenshot"],
+    style: node.properties.width && `width: ${node.properties.width}px`,
   });
 
   // If the file exists with identical content, then assume that the
