@@ -92,7 +92,7 @@ You'll notice that the card already has some layout elements.
     I.click('[data-widget=image]')
   </screenshot>
 
-  <screenshot>
+  <screenshot of="#workspace">
     I.click('Components')
     I.click('[title="new component"]')
     I.click('[data-type=card]')
@@ -105,10 +105,11 @@ You'll notice that the card already has some layout elements.
     I.fillField('[data-widget=height]', 500)
     I.click('[data-widget=image]')
     I.click('[alt="Asset 16"]')
+    await I.arrowLeft('[data-close=true]')
   </screenshot>
 </Carousel>
 
 1. Click on the **Image** tool to add a new image.
 1. Click on the **Asset Browser** to select the image that you want to add.
 1. Select an image from the one of the assets. Boardgame Lab comes with hundreds of stock images that you can use in your prototypes before you develop art for your game.
-1. Reposition.
+1. Click on the close button (or press **Escape**) to exit the layout editor.
