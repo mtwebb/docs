@@ -22,15 +22,12 @@ of Boardgame Lab to spawn dozens of components quickly with minimal effort.
   </screenshot>
 
   <screenshot>
-    I.click('Components')
     I.click('[title="new component"]')
     await I.highlight('[data-type="card"]')
     await I.arrowDown('[data-type="card"]')
   </screenshot>
 
   <screenshot>
-    I.click('Components')
-    I.click('[title="new component"]')
     I.click('[data-type=card]')
     await I.arrowUp('[data-testid=template]:first-child')
   </screenshot>
@@ -71,11 +68,6 @@ Let's add an image to this card.
   </screenshot>
 
   <screenshot of="#workspace">
-    I.click('Components')
-    I.click('[title="new component"]')
-    I.click('[data-type=card]')
-    I.click('[data-testid=template]:first-child')
-    I.click('.face')
     I.click('[data-tool=image]')
     I.fillField('[data-widget=x]', 65)
     I.fillField('[data-widget=y]', 340)
@@ -86,27 +78,10 @@ Let's add an image to this card.
   </screenshot>
 
   <screenshot>
-    I.click('Components')
-    I.click('[title="new component"]')
-    I.click('[data-type=card]')
-    I.click('[data-testid=template]:first-child')
-    I.click('.face')
-    I.click('[data-tool=image]')
     I.click('[data-widget=image]')
   </screenshot>
 
   <screenshot of="#workspace">
-    I.click('Components')
-    I.click('[title="new component"]')
-    I.click('[data-type=card]')
-    I.click('[data-testid=template]:first-child')
-    I.click('.face')
-    I.click('[data-tool=image]')
-    I.fillField('[data-widget=x]', 65)
-    I.fillField('[data-widget=y]', 340)
-    I.fillField('[data-widget=width]', 500)
-    I.fillField('[data-widget=height]', 500)
-    I.click('[data-widget=image]')
     I.click('[alt="Asset 16"]')
     await I.arrowLeft('[data-close=true]')
   </screenshot>

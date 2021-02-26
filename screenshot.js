@@ -31,6 +31,7 @@ export default () => {
   return async (tree) => {
     let screenshots = [];
     let carousels = [];
+    let screenshotsToGenerate = [];
 
     visit(tree, "element", async (node, i, parent) => {
       if (node.tagName === "screenshot") {
@@ -50,22 +51,127 @@ export default () => {
       }
     });
 
-    for (const screenshot of screenshots) {
-      const { node, i, parent } = screenshot;
-      parent.children[i] = await ProcessScreenshot(node);
+    // Create working dir if it doesn't exist.
+    if (!fs.existsSync(codeceptDir)) {
+      fs.mkdirSync(codeceptDir);
     }
 
-    for (const carousel of carousels) {
-      const { node, i, parent } = carousel;
-      parent.children[i] = ProcessCarousel(node);
+    // Create files for the carousels.
+    carousels.filter(NeedsProcessing).forEach(({ node }) => {
+      const id = Hash(node);
+      const filepath = FileFromID(id);
+
+      screenshotsToGenerate.push(id);
+
+      const contents = GenCodeceptForCarousel(node);
+      fs.writeFileSync(filepath, contents.full.join("\n"));
+    });
+
+    // Create files for the standalone screenshots.
+    screenshots
+      .filter(({ parent }) => parent.tagName !== "carousel")
+      .filter(NeedsProcessing)
+      .forEach(({ node }) => {
+        const id = Hash(node);
+        const filepath = FileFromID(id);
+
+        screenshotsToGenerate.push(id);
+
+        const contents = GenCodeceptForScreenshot(node);
+        fs.writeFileSync(filepath, contents.full.join("\n"));
+      });
+
+    // Replace screenshot tags with <img>.
+    screenshots.forEach(ReplaceScreenshotTag);
+
+    // Replace carousel tags with raw versions that can be processed by Svelte.
+    carousels.forEach(ReplaceCarouselTag);
+
+    // Generate screenshots.
+    if (screenshotsToGenerate.length && !process.env.CI) {
+      const grep = screenshotsToGenerate.join("|");
+      const run = `npm run codecept:headless -- --grep="${grep}"`;
+
+      await new Promise((resolve) => {
+        const cmd = spawn(run, { shell: true });
+        cmd.stdout.on("data", (data) => console.log(data.toString()));
+        cmd.stderr.on("data", (data) => console.log(data.toString()));
+        cmd.on("exit", resolve());
+      });
     }
 
     return tree;
   };
 };
 
-function ProcessCarousel(node) {
-  const play = node.properties.play;
+function Hash(node) {
+  const hash = crypto.createHash("sha1");
+  hash.update(toHTML(node));
+  return hash.digest("hex");
+}
+
+function FileFromID(id) {
+  const filename = `${id}.js`;
+  return path.join(codeceptDir, filename);
+}
+
+function NeedsProcessing({ node }) {
+  const id = Hash(node);
+  const filepath = FileFromID(id);
+  return !fs.existsSync(filepath);
+}
+
+function IsNotHighlightCommand(line) {
+  return (
+    line.indexOf("await I.arrow") === -1 &&
+    line.indexOf("await I.highlight") === -1
+  );
+}
+
+function GenCodeceptForCarousel(node) {
+  const id = Hash(node);
+
+  let contents = [`Feature("${id}")`];
+
+  let cumulative = [];
+
+  node.children
+    .filter((c) => c.tagName === "screenshot")
+    .forEach((c) => {
+      const { header, middle, footer } = GenCodeceptForScreenshot(c);
+      cumulative = [...cumulative.filter(IsNotHighlightCommand), ...middle];
+      contents.push(...["", ...header, ...cumulative, ...footer]);
+    });
+
+  return {
+    full: contents,
+  };
+}
+
+function GenCodeceptForScreenshot(node) {
+  const id = Hash(node);
+  const body = toString(node);
+
+  let screenshotCmd = `I.saveScreenshot("${id}.png")`;
+  if (node.properties.of) {
+    screenshotCmd = `I.saveElementScreenshot("${node.properties.of}", "${id}.png")`;
+  }
+
+  const header = [`Scenario("${id}", async ({I}) => {`, 'I.amOnPage("/")'];
+  const middle = body.split("\n");
+  const footer = [screenshotCmd, "});"];
+  const full = [`Feature("${id}")`, "", ...header, ...middle, ...footer];
+
+  return {
+    header,
+    middle,
+    footer,
+    full,
+  };
+}
+
+function ReplaceCarouselTag({ node, i, parent }) {
+  const { play } = node.properties;
 
   let index = 0;
   node.children.forEach((child) => {
@@ -77,83 +183,22 @@ function ProcessCarousel(node) {
     }
   });
 
-  return u(
+  parent.children[i] = u(
     "raw",
     `<Carousel play=${play}>` + toHTML(node.children) + "</Carousel>"
   );
 }
 
-async function ProcessScreenshot(node) {
-  // Body of <screenshot> tag containing Codecept code.
-  const body = toString(node);
-
-  if (!fs.existsSync(codeceptDir)) {
-    fs.mkdirSync(codeceptDir);
-  }
-
-  // Get hash of the body for a stable filename.
-  let id = node.properties.name;
-
-  if (!id) {
-    const hash = crypto.createHash("md5");
-    hash.update(body);
-    id = hash.digest("hex");
-  }
-
-  const codeceptFilename = `${id}.js`;
-
-  let screenshotCmd = `I.saveScreenshot("${id}.png")`;
-
-  if (node.properties.of) {
-    screenshotCmd = `I.saveElementScreenshot("${node.properties.of}", "${id}.png")`;
-  }
-
-  // Generate Codecept test file.
-  const codeceptContents = [
-    `Feature("${id}")`,
-    `Scenario("${id}", async ({I}) => {`,
-    `I.amOnPage('/')`,
-    body,
-    screenshotCmd,
-    `});`,
-  ].join("\n");
+function ReplaceScreenshotTag({ node, i, parent }) {
+  const id = Hash(node);
 
   // Replace <screenshot> tag with an <img> pointing to a screenshot
   // image that we generate from the Codecept test file.
   const imgSrc = path.join(imgDir, id);
-  const result = h("img", {
+  parent.children[i] = h("img", {
     alt: "screenshot",
     src: `${imgSrc}.png`,
     className: ["screenshot"],
     style: node.properties.width && `width: ${node.properties.width}px`,
-  });
-
-  // If the file exists with identical content, then assume that the
-  // image was already generated and return the image tag right away.
-  const codeceptFilePath = path.join(codeceptDir, codeceptFilename);
-  try {
-    const existing = fs.readFileSync(codeceptFilePath, { encoding: "utf8" });
-    if (codeceptContents === existing) {
-      return result;
-    }
-  } catch (_) {}
-
-  // Otherwise, write file.
-  fs.writeFileSync(codeceptFilePath, codeceptContents);
-
-  // If we're running on Netlify or elsewhere, assume that the screenshots
-  // are generated separately.
-  if (process.env.CI) {
-    return result;
-  }
-
-  // Run Codecept.
-  return new Promise((resolve) => {
-    const cmd = spawn(`npm run codecept:headless -- --grep=${id}`, {
-      shell: true,
-    });
-    cmd.stdout.on("data", (data) => console.log(data.toString()));
-    cmd.stderr.on("data", (data) => console.log(data.toString()));
-    cmd.on("exit", () => resolve(result));
   });
 }
