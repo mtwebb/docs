@@ -41,9 +41,8 @@
     <div class="w-full h-full flex flex-row">
       <Nav />
 
-      <div class="relative w-full h-full flex-grow">
-        <div
-          class="absolute container px-8 md:px-32 py-8 h-full overflow-y-auto">
+      <div class="relative w-full h-full flex-grow overflow-y-auto">
+        <div class="absolute container px-8 md:px-32 py-8 min-h-full">
           <slot />
         </div>
       </div>
