@@ -116,4 +116,39 @@ Our finished card should look something like this.
 
 Now let's look at how we can spawn multiple instances of this component using data from a spreadsheet.
 
-> Work in progress
+<Carousel play={false}>
+  <screenshot>
+    I.click('Components')
+    I.click('[title="new component"]')
+    I.click('[data-type=card]')
+    I.click('[data-testid=template]:first-child')
+    I.click('.face')
+    I.click('[data-tool=image]')
+    I.fillField('[data-widget=x]', 65)
+    I.fillField('[data-widget=y]', 340)
+    I.fillField('[data-widget=width]', 500)
+    I.fillField('[data-widget=height]', 500)
+    I.click('[data-widget=image]')
+    I.click('[alt="Asset 16"]')
+    I.click('[data-close=true]')
+    await I.highlight('[title=Data]')
+    await I.arrowUp('[title=Data]')
+  </screenshot>
+
+  <screenshot>
+    I.click('[title=Data]')
+    await I.arrowDown('[title="add instance"]')
+  </screenshot>
+
+  <screenshot>
+    I.click('[title="add instance"]')
+  </screenshot>
+</Carousel>
+
+1. Click on the **Data** tab.
+2. This view contains a spreadsheet with one row per instance of the component that we
+just created. You'll notice that it contains one row, which means that our game currently has one instance of this
+component. Click on the **Add Instance** button at the bottom right to add another instance.
+3. You should now have two instances of the component.
+
+> work in progress
