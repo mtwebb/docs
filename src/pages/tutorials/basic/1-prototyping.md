@@ -157,8 +157,7 @@ Now let's look at how we can spawn multiple instances of this component using da
 just created. You'll notice that it contains one row, which means that our game currently has one instance of this
 component. Click on the **Add Instance** button at the bottom right to add another instance.
 1. You should now have two instances of the component.
-1. You might have also noticed a column for the **Title** property. You can customize the value of a property per
-instance.
-1. Fill out different values for the **Title** property for the two instances. You should see the card previews update immediately because the **Title** property was a part of the layout.
+1. You might have also noticed a column for the **Title** property.
+1. Fill out different values for the **Title** property for the two instances. The card images should now have different titles, with the values coming from the spreadsheet!
 
 > work in progress
