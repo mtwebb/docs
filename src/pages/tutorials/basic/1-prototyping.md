@@ -50,11 +50,9 @@ and one for the **back**.
   await I.highlight('.face')
 </screenshot>
 
-Click on the front face to start customizing it.
-You'll notice that the card already has some layout elements (a colored rectangle and a text field).
-The text field has a **Title** property inside it. Don't worry about it for now.
+Click on the front face to start customizing it.  Let's add an image to this card.
 
-Let's add an image to this card.
+> You'll notice that the card already has some layout elements (a colored rectangle and a text field). The text field has a **Title** property inside it. A [property](/concepts) is a piece of data that you can attach to a component. In this case, the default card component comes with a **Title** property that is just a piece of text. You'll see later why this is useful.
 
 <Carousel play={false}>
   <screenshot of="#workspace">
@@ -143,12 +141,24 @@ Now let's look at how we can spawn multiple instances of this component using da
   <screenshot>
     I.click('[title="add instance"]')
   </screenshot>
+
+  <screenshot>
+    await I.highlight('[data-property=true]')
+  </screenshot>
+
+  <screenshot>
+    I.fillField(locate('input[type=text]').at(1), 'Title A')
+    I.fillField(locate('input[type=text]').at(2), 'Title B')
+  </screenshot>
 </Carousel>
 
 1. Click on the **Data** tab.
-2. This view contains a spreadsheet with one row per instance of the component that we
+1. This view contains a spreadsheet with one row per instance of the component that we
 just created. You'll notice that it contains one row, which means that our game currently has one instance of this
 component. Click on the **Add Instance** button at the bottom right to add another instance.
-3. You should now have two instances of the component.
+1. You should now have two instances of the component.
+1. You might have also noticed a column for the **Title** property. You can customize the value of a property per
+instance.
+1. Fill out different values for the **Title** property for the two instances. You should see the card previews update immediately because the **Title** property was a part of the layout.
 
 > work in progress
