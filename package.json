@@ -11,7 +11,7 @@
     "build:ci": "CI=true npm run build",
     "build:app": "routify -b && rollup -c",
     "build:static": "spank",
-    "build:screenshots": "spank",
+    "build:screenshots": "CODECEPT_OUTPUT=dist/screenshots npm run codecept:headless",
     "build:check-links": "node -r esm scripts/check-links.js",
     "build:verify": "start-server-and-test serve http://localhost:5000/ build:check-links",
     "serve": "sirv dist",

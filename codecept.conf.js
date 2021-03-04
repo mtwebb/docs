@@ -1,6 +1,6 @@
 exports.config = {
   tests: "codecept/*.js",
-  output: "static/screenshots",
+  output: process.env.CODECEPT_OUTPUT || "static/screenshots",
   helpers: {
     Playwright: {
       url: "https://preview.boardgamelab.app/",
