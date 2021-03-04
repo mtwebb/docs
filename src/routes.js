@@ -8,10 +8,23 @@ function IsRoutifyInternalFile(entry) {
   return entry.isReset || entry.isLayout || entry.isIndex || entry.isFallback;
 }
 
+function IsPage(entry) {
+  if (entry.isPage) {
+    return true;
+  }
+
+  if (entry.isDir && entry.children) {
+    return entry.children.some((child) => child.isIndex);
+  }
+
+  return false;
+}
+
 function ProcessDir(entry) {
   return {
     text: GetText(entry),
     path: entry.path,
+    isPage: IsPage(entry),
     children: entry.children
       .filter((c) => !IsRoutifyInternalFile(c))
       .sort(Sort)
@@ -22,6 +35,7 @@ function ProcessDir(entry) {
 function ProcessFile(entry) {
   return {
     path: entry.path,
+    isPage: IsPage(entry),
     text: GetText(entry),
   };
 }
