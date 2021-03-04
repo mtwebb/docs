@@ -21,7 +21,8 @@
 <carousel>
   <screenshot>
     I.click('Components')
-    I.pressKey('c')
+    I.click('[title="new component"]')
+    I.click('[data-type=card]')
     await I.arrowLeft('[data-testid=template]')
   </screenshot>
 
@@ -39,7 +40,8 @@
 <carousel>
   <screenshot>
     I.click('Components')
-    I.pressKey('c')
+    I.click('[title="new component"]')
+    I.click('[data-type=card]')
     await I.arrowLeft('[data-testid=template]')
   </screenshot>
 
