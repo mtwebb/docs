@@ -28,7 +28,7 @@ const codeceptDir = "codecept";
 const imgDir = "/screenshots";
 
 export default () => {
-  return async (tree) => {
+  return async (tree, { filename }) => {
     let screenshots = [];
     let carousels = [];
     let screenshotsToGenerate = [];
@@ -98,6 +98,11 @@ export default () => {
         cmd.stderr.on("data", (data) => console.log(data.toString()));
         cmd.on("exit", resolve());
       });
+    }
+
+    // Generate the import statement in case a carousel is used.
+    if (carousels.length) {
+      tree.children = [GenerateCarouselImport(filename), ...tree.children];
     }
 
     return tree;
@@ -201,4 +206,25 @@ function ReplaceScreenshotTag({ node, i, parent }) {
     className: ["screenshot"],
     style: node.properties.width && `width: ${node.properties.width}px`,
   });
+}
+
+function GenerateCarouselImport(filename) {
+  const prefix = "/src/pages";
+  const i = filename.lastIndexOf("/src/pages");
+  const suffix = filename.substring(i + prefix.length);
+  const n = (suffix.match(/\//g) || []).length;
+  const importPath = path.join(
+    new Array(n).fill("..").join("/"),
+    "ui",
+    "Carousel.svelte"
+  );
+
+  return u(
+    "raw",
+    `
+    <script>
+      import Carousel from "${importPath}";
+    </script>
+  `
+  );
 }
