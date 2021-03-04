@@ -29,7 +29,7 @@ of Boardgame Lab to spawn dozens of components quickly with minimal effort.
 
   <screenshot>
     I.click('[data-type=card]')
-    await I.arrowUp('[data-testid=template]:first-child')
+    await I.arrowUp('[data-testid=template]')
   </screenshot>
 </Carousel>
 
@@ -46,7 +46,7 @@ and one for the **back**.
   I.click('Components')
   I.click('[title="new component"]')
   I.click('[data-type=card]')
-  I.click('[data-testid=template]:first-child')
+  I.click('[data-testid=template]')
   await I.highlight('.face')
 </screenshot>
 
@@ -59,7 +59,7 @@ Click on the front face to start customizing it.  Let's add an image to this car
     I.click('Components')
     I.click('[title="new component"]')
     I.click('[data-type=card]')
-    I.click('[data-testid=template]:first-child')
+    I.click('[data-testid=template]')
     I.click('.face')
     await I.highlight('[data-tool=image]')
     await I.arrowLeft('[data-tool=image]')
@@ -96,7 +96,7 @@ Our finished card should look something like this.
   I.click('Components')
   I.click('[title="new component"]')
   I.click('[data-type=card]')
-  I.click('[data-testid=template]:first-child')
+  I.click('[data-testid=template]')
   I.click('.face')
   I.click('[data-tool=image]')
   I.fillField('[data-widget=x]', 65)
@@ -119,7 +119,7 @@ Now let's look at how we can spawn multiple instances of this component using da
     I.click('Components')
     I.click('[title="new component"]')
     I.click('[data-type=card]')
-    I.click('[data-testid=template]:first-child')
+    I.click('[data-testid=template]')
     I.click('.face')
     I.click('[data-tool=image]')
     I.fillField('[data-widget=x]', 65)
