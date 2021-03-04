@@ -1,7 +1,7 @@
 import { mdsvex } from "mdsvex";
 import raw from "rehype-raw";
-import screenshot from "./screenshot";
-import list from "./list";
+import screenshot from "./plugins/screenshot";
+import list from "./plugins/list";
 import svelte from "rollup-plugin-svelte-hot";
 import Hmr from "rollup-plugin-hot";
 import resolve from "@rollup/plugin-node-resolve";
