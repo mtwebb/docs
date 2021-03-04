@@ -16,7 +16,7 @@ Screenshots are automatically generated using `<screenshot>` tags:
 </screenshot>
 ```
 
-The commands that you see inside are CodeceptJS commands, which are
+The stuff that you see inside the tag are CodeceptJS commands, which are
 performed on the Boardgame Lab app before taking a screenshot.
 
 Take a look at the CodeceptJS docs for more details on what you can
@@ -41,8 +41,10 @@ the appropriate screenshot).
 1. Step 3
 ```
 
-The steps inside the screenshots in a carousel are run cumulatively
+The commands inside the screenshots in a carousel are run cumulatively
 (i.e. the second screenshot continues from where the first left off).
+
+> Note: The carousel must immediately precede the list of steps for it to work correctly.
 
 ## Highlighting
 
