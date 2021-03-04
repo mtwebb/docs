@@ -6,7 +6,7 @@ index: 0
 
 <screenshot name="main">
   I.click('Components')
-  .click('[title="new component"]')
+  I.click('[title="new component"]')
   I.click('[data-type=card]')
   I.click('[data-testid=template]')
 </screenshot>
