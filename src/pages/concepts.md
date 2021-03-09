@@ -20,8 +20,8 @@ of the card.
 
 ### Rule
 
-Rules are series of steps that describe how a particular game situation is meant to be played out.
-They might describe what happens when a particular card is played, or describe the overall
+A series of steps that describe how a particular game situation is meant to be played out.
+It might describe what happens when a particular card is played, or describe the overall
 flow of the game.
 Rules are assembled using a powerful visual scripting system that doesn't require writing any code.
 
