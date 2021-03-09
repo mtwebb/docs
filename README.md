@@ -1,7 +1,7 @@
 # Boardgame Lab Documentation
 
 Documentation is contained in Markdown files located in `src/pages`.
-Changes to these files are automatically pushed to production.
+Changes to these files are automatically published to the website.
 
 ## Screenshots
 
