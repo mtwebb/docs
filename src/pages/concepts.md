@@ -7,9 +7,9 @@ text: "Concepts"
 ### Component
 
 A game object that you can interact with during play (a card, for example).
-A Component can have multiple instances, each slightly different from the other.
+A component can have multiple instances, each slightly different from the other.
 Components have layouts that determine what they look like.
-They can hold data via Properties. You may also attach Rules to components.
+They can hold data via **properties**. You may also attach **rules** to components.
 
 ### Property
 
@@ -27,11 +27,11 @@ Rules are assembled using a powerful visual scripting system that doesn't requir
 
 ### Trait
 
-A Trait is like a partially fleshed out component. It is also a collection of Properties, Rules
-and layout. It can be used to store things that are shared across multiple Components.
-For example, your game might have cards and hex tiles that both have a cost Property
-and an associated Rule that determines how the object is purchased. One option would
+A trait is like a partially fleshed out component. It is also a collection of properties, rules
+and layout. It can be used to store things that are shared across multiple components.
+For example, your game might have cards and hex tiles that both have a cost property
+and an associated rule that determines how the object is purchased. One option would
 be to define these things in both places, but a better approach would be to define
-them in a Trait and then import the Trait in both components.
+them in a trait and then import the trait in both components.
 
 > Traits are advanced features that may not be needed for simpler games.
