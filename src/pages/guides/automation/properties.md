@@ -4,9 +4,9 @@ text: "Properties"
 
 # Properties
 
-A **property** is a piece of data that you can attach to a component instance.
-Properties are useful for organizing data for both the layout of the component as well
-as the rules associated with it.
+A **property** is a piece of data that you can attach to a component.
+Data from properties can be embedded in the layout of the component.
+Properties are also frequently manipulated in [rules](./rules).
 
 ---
 
@@ -28,7 +28,7 @@ A numeric attribute (a card cost or attack value, for example).
 ### Boolean
 
 Boolean properties can be either **Yes** or **No**. These are typically
-used as switches to turn on / off layers and also inside rules.
+used as switches to turn on / off layers or rule conditions.
 
 ### Reference
 

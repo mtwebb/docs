@@ -9,7 +9,8 @@ text: "Concepts"
 A game object that you can interact with during play (a card, for example).
 A component can have multiple instances, each slightly different from the other.
 Components have layouts that determine what they look like.
-They can hold data via **properties**. You may also attach **rules** to components.
+They can hold data via [properties](/guides/automation/properties).
+You may also attach [rules](/guides/automation/rules) to components.
 
 ### Property
 

@@ -24,7 +24,7 @@
 
   p a,
   li a {
-    @apply underline;
+    @apply text-blue-700 font-bold hover:opacity-75;
   }
 
   ul,
@@ -81,7 +81,7 @@
   }
 
   h2 {
-    @apply my-2 text-2xl font-bold;
+    @apply my-4 text-2xl font-bold;
   }
 
   h3 {
