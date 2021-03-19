@@ -17,7 +17,7 @@ game (turn orders, phases etc.).
 Rules are assembled as series of steps, each containing an **expression**. An expression
 is something that produces a value. Expressions could be simple arithmetic operations
 or complex transformations on data coming from a [property](./properties). Expressions
-can also contain **actions** that are performed on components on the board (shuffling
+can also contain **actions** that are performed on the board (shuffling
 a deck, for example) or trigger other **rules**.
 
 > Yes, **actions** are also expressions even though they don't produce a value as such.

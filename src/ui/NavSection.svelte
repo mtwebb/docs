@@ -34,11 +34,11 @@
   }
 
   .level-0 {
-    @apply text-gray-100 p-1 bg-gray-600 rounded uppercase font-bold whitespace-nowrap mb-1 pl-6;
+    @apply text-gray-400 font-bold text-sm p-1 rounded uppercase whitespace-nowrap mb-1;
   }
 
   .level-1 {
-    @apply text-gray-800 font-bold whitespace-nowrap mb-2 px-4 p-1 rounded hover:bg-gray-200;
+    @apply text-gray-600 font-bold whitespace-nowrap mb-2 px-4 p-1 rounded hover:bg-gray-200;
   }
 
   .leaf {

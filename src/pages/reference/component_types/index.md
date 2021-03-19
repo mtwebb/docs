@@ -1,3 +1,0 @@
----
-text: "Component Types"
----
