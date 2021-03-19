@@ -1,3 +1,7 @@
+# Layout
+
+Every component has a **layout** that can be customized using the built-in editor.
+
 ## Creating a component
 
 <carousel>
