@@ -8,10 +8,3 @@ all the cards in it are removed.
 
 ## Actions
 
-### Shuffle
-
-Shuffles the cards in the deck.
-
-### Flip
-
-Flips the entire deck.

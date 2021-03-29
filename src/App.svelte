@@ -24,7 +24,7 @@
 
   p a,
   li a {
-    @apply text-blue-700 font-bold hover:opacity-75;
+    @apply text-primary font-bold hover:opacity-75;
   }
 
   ul,
