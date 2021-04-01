@@ -1,3 +1,6 @@
+---
+---
+
 # Deck
 
 A **deck** is formed the moment a card is stacked on top of another card.
@@ -8,3 +11,10 @@ all the cards in it are removed.
 
 ## Actions
 
+### Shuffle
+
+Shuffles the deck.
+
+### Flip
+
+Flips the deck over.
