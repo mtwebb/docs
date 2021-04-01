@@ -2,7 +2,10 @@
   import { setContext } from "svelte";
   import NavSection from "./NavSection.svelte";
   import MenuIcon from "svelte-icons/md/MdMenu.svelte";
-  import routes from "../routes";
+  import { Sort } from "../routes";
+  import { layout } from "@roxi/routify";
+
+  $: console.log($layout);
 
   setContext("HideWithDelay", HideWithDelay);
 
@@ -48,7 +51,7 @@
   }
 
   .nav {
-    @apply flex-shrink-0 bg-gray-100 pl-4 transform duration-300 -translate-x-64 fixed top-0 left-0 shadow-lg h-full bg-white z-50 py-16 select-none overflow-y-auto w-64;
+    @apply flex-shrink-0 bg-gray-100 transform duration-300 -translate-x-64 fixed top-0 left-0 shadow-lg h-full bg-white z-50 py-16 select-none overflow-y-auto w-64;
   }
 
   .show {
@@ -65,13 +68,9 @@
 <svelte:window on:click={OnClick} />
 
 <div data-testid="nav" data-menu="true" class="nav" class:show>
-  <div class="h-full flex flex-col justify-between">
-    <div class="flex flex-col px-4 md:px-2 w-full">
-      {#each routes as section}
-        <NavSection {section} />
-      {/each}
-    </div>
-  </div>
+  {#each $layout.children.sort(Sort) as section}
+    <NavSection {section} />
+  {/each}
 </div>
 
 <div
