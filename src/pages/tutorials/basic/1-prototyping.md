@@ -146,6 +146,11 @@ Now let's look at how we can spawn multiple instances of this component using da
     I.fillField(locate('input[type=text]').at(1), 'Title A')
     I.fillField(locate('input[type=text]').at(2), 'Title B')
   </screenshot>
+
+  <screenshot>
+    I.click('[title="add instance"]')
+    I.fillField(locate('input[type=text]').at(3), 'Title C')
+  </screenshot>
 </carousel>
 
 1. Click on the **Data** tab.
@@ -155,5 +160,4 @@ component. Click on the **Add Instance** button at the bottom right to add anoth
 1. You should now have two instances of the component.
 1. You might have also noticed a column for the **Title** property.
 1. Fill out different values for the **Title** property for the two instances. The card images should now have different titles, with the values coming from the spreadsheet!
-
-> work in progress
+1. Follow the same procedure to create a third card.

@@ -1,4 +1,5 @@
 <script>
+  import Links from "../ui/Links.svelte";
   import Nav from "../ui/Nav.svelte";
   import { beforeUrlChange, afterPageLoad } from "@roxi/routify";
 
@@ -38,14 +39,18 @@
       <h2 class="text-gray-100 mr-4">User Guide</h2>
     </div>
 
-    <div class="w-full h-full flex flex-row">
+    <div class="relative w-full h-full flex flex-row">
       <Nav />
 
       <div class="relative w-full h-full flex-grow overflow-y-auto">
-        <div class="absolute container px-8 md:px-32 py-8 min-h-full">
+        <div
+          id="content"
+          class="absolute container px-8 md:px-32 py-8 min-h-full">
           <slot />
         </div>
       </div>
+
+      <Links />
     </div>
   </div>
 
