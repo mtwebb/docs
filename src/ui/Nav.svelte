@@ -5,8 +5,6 @@
   import { Sort } from "../routes";
   import { layout } from "@roxi/routify";
 
-  $: console.log($layout);
-
   setContext("HideWithDelay", HideWithDelay);
 
   let hamburger;
@@ -43,6 +41,22 @@
       show = false;
     }, 500);
   }
+
+  let items = [];
+
+  $: {
+    items = [
+      {
+        title: "Overview",
+        path: "/index",
+        children: [],
+        __file: {
+          isPage: true,
+        },
+      },
+      ...$layout.children.sort(Sort),
+    ];
+  }
 </script>
 
 <style>
@@ -68,7 +82,7 @@
 <svelte:window on:click={OnClick} />
 
 <div data-testid="nav" data-menu="true" class="nav" class:show>
-  {#each $layout.children.sort(Sort) as section}
+  {#each items as section}
     <NavSection {section} />
   {/each}
 </div>
