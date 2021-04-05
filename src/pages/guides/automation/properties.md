@@ -2,6 +2,30 @@
 text: "Properties"
 ---
 
+<script>
+  import Property from "../../../../editor/src/components/automation/property/Property.svelte";
+
+  const text = {
+    name: "Text",
+    type: "text",
+  };
+
+  const image = {
+    name: "Image",
+    type: "image",
+  };
+
+  const number = {
+    name: "Number",
+    type: "number",
+  };
+
+  const boolean = {
+    name: "Boolean",
+    type: "boolean",
+  };
+</script>
+
 # Properties
 
 A **property** is a piece of data that you can attach to a component.
@@ -12,20 +36,28 @@ Properties are also frequently manipulated in [rules](./rules).
 
 ## Types of properties
 
-### Text
+<div class="my-2 mt-8 w-64">
+<Property property={text} hoverable={false} selectable={false} showTools={false}></Property>
+</div>
 
 Title text, descriptions etc. are typical uses of a **text** property.
 
-### Image
+<div class="my-2 mt-8 w-64">
+<Property property={image} hoverable={false} selectable={false} showTools={false}></Property>
+</div>
 
 Useful when you want to associate a different image with each component instance
 (that you can subsequently pull into the layout).
 
-### Number
+<div class="my-2 mt-8 w-64">
+<Property property={number} hoverable={false} selectable={false} showTools={false}></Property>
+</div>
 
 A numeric attribute (a card cost or attack value, for example).
 
-### Boolean
+<div class="my-2 mt-8 w-64">
+<Property property={boolean} hoverable={false} selectable={false} showTools={false}></Property>
+</div>
 
 Boolean properties can be either **Yes** or **No**. These are typically
 used as switches to turn on / off layers or rule conditions.

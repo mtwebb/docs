@@ -2,6 +2,7 @@ import { mdsvex } from "mdsvex";
 import raw from "rehype-raw";
 import screenshot from "./plugins/screenshot";
 import list from "./plugins/list";
+import unraw from "./plugins/unraw";
 import svelte from "rollup-plugin-svelte-hot";
 import Hmr from "rollup-plugin-hot";
 import resolve from "@rollup/plugin-node-resolve";
@@ -66,7 +67,7 @@ export default {
       preprocess: [
         mdsvex({
           extension: ".md",
-          rehypePlugins: [raw, screenshot, list],
+          rehypePlugins: [raw, screenshot, list, unraw],
         }),
         autoPreprocess({
           postcss: {
