@@ -20,8 +20,8 @@ or complex transformations on data coming from a [property](./properties). For e
 Expressions may also contain **actions** that are performed on the board (shuffling
 a deck, for example).
 
-> Yes, **actions** are also expressions even though they don't really produce a value.
-> They're treated as expressions producing an **empty** value.
+> **Actions** are also expressions even though they don't really produce a value.
+> They're treated as expressions that produce an **empty** value.
 
 ### Literals
 

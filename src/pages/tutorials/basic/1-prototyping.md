@@ -48,7 +48,7 @@ and one for the **back**.
 
 Click on the front face to start customizing it.  Let's add an image to this card.
 
-> You'll notice that the card already has some layout elements (a colored rectangle and a text field). The text field has a **Title** property inside it. A [property](/concepts) is a piece of data that you can attach to a component. In this case, the default card component comes with a **Title** property that is just a piece of text. You'll see later why this is useful.
+> You'll notice that the card already has some layout elements (a colored rectangle and a text field). The text field has a **Title** [property](/guides/automation/properties) inside it. You'll see later how we can use data from a spreadsheet to generate values for this property.
 
 <carousel play={false}>
   <screenshot of="#workspace">
