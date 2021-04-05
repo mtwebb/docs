@@ -14,7 +14,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           token: ${{ secrets.PAT }}
-          submodules: 'recursive'
+          submodules: 'true'
 
       - run: npm install
 
