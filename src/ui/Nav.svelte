@@ -74,7 +74,7 @@
 
   @screen md {
     .nav {
-      @apply duration-0 z-auto static translate-x-0 shadow-none border-r pt-12;
+      @apply duration-0 z-auto static translate-x-0 shadow-none pt-12;
     }
   }
 </style>

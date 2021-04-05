@@ -56,7 +56,7 @@
   }
 
   .leaf {
-    @apply text-sm font-bold border border-transparent text-gray-400;
+    @apply text-sm font-bold border-t border-b border-transparent text-gray-400;
   }
 
   .noleaf {
