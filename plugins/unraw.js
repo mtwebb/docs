@@ -19,6 +19,9 @@ import toString from "hast-util-to-string";
 import toHTML from "hast-util-to-html";
 import visit from "unist-util-visit";
 
+/**
+ * Undoes the effect of rehype-raw.
+ */
 export default () => {
   return async (tree, { filename }) => {
     visit(tree, "element", async (node, i, parent) => {
@@ -42,8 +45,6 @@ function Process({ node, i, parent }) {
 
   const attrsStr = attrs.join(" ");
   const t = `<${nodeName} ${attrsStr} />`;
-
-  console.log(t);
 
   parent.children[i] = u("raw", t);
 }
