@@ -24,7 +24,13 @@ module.exports = {
   },
   plugins: [],
   purge: {
-    content: ["./src/**/*.svelte", "./static/*.html", "./src/**/*.html"],
+    content: [
+      "./src/**/*.md",
+      "./src/**/*.svelte",
+      "./editor/**/*.svelte",
+      "./static/*.html",
+      "./src/**/*.html",
+    ],
     // this is for extracting Svelte `class:` syntax but is not perfect yet, see below
     defaultExtractor: (content) => {
       const broadMatches = content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || [];
