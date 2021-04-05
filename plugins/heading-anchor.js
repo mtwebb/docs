@@ -14,17 +14,16 @@
  *  limitations under the License.
  */
 
-import u from "unist-builder";
+import h from "hastscript";
 import visit from "unist-util-visit";
+import toString from "hast-util-to-string";
+import crypto from "crypto";
 
-/**
- * Undoes the effect of rehype-raw.
- */
 export default () => {
-  return async (tree, { filename }) => {
-    visit(tree, "element", async (node, i, parent) => {
-      if (node.tagName === "property" || node.tagName === "action") {
-        Process({ node, i, parent });
+  return async (tree) => {
+    visit(tree, "element", (node) => {
+      if (node.tagName === "h2") {
+        node.properties.id = Hash(node);
       }
     });
 
@@ -32,17 +31,7 @@ export default () => {
   };
 };
 
-function Process({ node, i, parent }) {
-  const nodeName = node.tagName.charAt(0).toUpperCase() + node.tagName.slice(1);
-
-  let attrs = [];
-  for (const key in node.properties) {
-    const value = node.properties[key];
-    attrs.push(`${key}=${value}`);
-  }
-
-  const attrsStr = attrs.join(" ");
-  const t = `<${nodeName} ${attrsStr} />`;
-
-  parent.children[i] = u("raw", t);
+function Hash(node) {
+  const str = toString(node);
+  return str.toLowerCase().replace(/ /g, "-");
 }
