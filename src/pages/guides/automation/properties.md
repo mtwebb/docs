@@ -59,7 +59,7 @@ A numeric attribute (a card cost or attack value, for example).
 <Property property={boolean} hoverable={false} selectable={false} showTools={false}></Property>
 </div>
 
-Boolean properties can be either **Yes** or **No**. These are typically
+Boolean properties can be either **true** or **false**. These are typically
 used as switches to turn on / off layers or rule conditions.
 
 ### Reference
