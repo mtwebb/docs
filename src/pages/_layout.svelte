@@ -1,5 +1,5 @@
 <script>
-  import Links from "../ui/Links.svelte";
+  import Sidebar from "../ui/Sidebar.svelte";
   import Nav from "../ui/Nav.svelte";
   import { beforeUrlChange, afterPageLoad } from "@roxi/routify";
 
@@ -50,7 +50,7 @@
         </div>
       </div>
 
-      <Links />
+      <Sidebar />
     </div>
   </div>
 
