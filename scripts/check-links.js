@@ -15,7 +15,7 @@
  */
 
 import blc from "broken-link-checker";
-import routes from "../src/routes";
+import { tree } from "../.routify/routes";
 
 const baseURL = "http://localhost:5000";
 let paths = ["/"];
@@ -46,7 +46,7 @@ const urlChecker = new blc.HtmlUrlChecker(options, {
   },
 });
 
-GetPaths(routes);
+GetPaths(tree.children);
 paths.forEach((p) => {
   console.log(p);
   urlChecker.enqueue(baseURL + p);
