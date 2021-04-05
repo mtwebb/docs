@@ -1,6 +1,22 @@
 ---
 ---
 
+<script>
+  import Action from "../../../../editor/src/components/automation/rule/expression/Action.svelte";
+
+  function GetAction(name) {
+    return {
+      body: {
+        action: {
+          action: {
+            [name]: null,
+          }
+        }
+      }
+    }
+  }
+</script>
+
 # Deck
 
 A **deck** is formed the moment a card is stacked on top of another card.
@@ -11,10 +27,10 @@ all the cards in it are removed.
 
 ## Actions
 
-### Shuffle
+<Action expression={GetAction("shuffle")}></Action>
 
 Shuffles the deck.
 
-### Flip
+<Action expression={GetAction("flip")}></Action>
 
 Flips the deck over.

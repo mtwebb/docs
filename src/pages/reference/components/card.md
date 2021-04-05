@@ -1,6 +1,22 @@
 ---
 ---
 
+<script>
+  import Action from "../../../../editor/src/components/automation/rule/expression/Action.svelte";
+
+  function GetAction(name) {
+    return {
+      body: {
+        action: {
+          action: {
+            [name]: null,
+          }
+        }
+      }
+    }
+  }
+</script>
+
 # Card
 
 Cards can be dragged into a player's hand. They also stack over each other to form a [deck](./deck).
@@ -9,10 +25,10 @@ Cards can be dragged into a player's hand. They also stack over each other to fo
 
 ## Actions
 
-### Flip
+<Action expression={GetAction("flip")}></Action>
 
 Flips the card over.
 
-### Rotate
+<Action expression={GetAction("rotate")}></Action>
 
 Rotates the card by 45 degrees.

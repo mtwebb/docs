@@ -25,7 +25,7 @@ import visit from "unist-util-visit";
 export default () => {
   return async (tree, { filename }) => {
     visit(tree, "element", async (node, i, parent) => {
-      if (node.tagName === "property") {
+      if (node.tagName === "property" || node.tagName === "action") {
         Process({ node, i, parent });
       }
     });

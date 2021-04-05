@@ -26,6 +26,12 @@ text: "Properties"
   };
 </script>
 
+<style>
+  .property {
+    @apply my-2 mt-8 w-64;
+  }
+</style>
+
 # Properties
 
 A **property** is a piece of data that you can attach to a component.
@@ -36,26 +42,26 @@ Properties are also frequently manipulated in [rules](./rules).
 
 ## Types of properties
 
-<div class="my-2 mt-8 w-64">
+<div class="property">
 <Property property={text} hoverable={false} selectable={false} showTools={false}></Property>
 </div>
 
 Title text, descriptions etc. are typical uses of a **text** property.
 
-<div class="my-2 mt-8 w-64">
+<div class="property">
 <Property property={image} hoverable={false} selectable={false} showTools={false}></Property>
 </div>
 
 Useful when you want to associate a different image with each component instance
 (that you can subsequently pull into the layout).
 
-<div class="my-2 mt-8 w-64">
+<div class="property">
 <Property property={number} hoverable={false} selectable={false} showTools={false}></Property>
 </div>
 
 A numeric attribute (a card cost or attack value, for example).
 
-<div class="my-2 mt-8 w-64">
+<div class="property">
 <Property property={boolean} hoverable={false} selectable={false} showTools={false}></Property>
 </div>
 
