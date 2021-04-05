@@ -89,7 +89,7 @@
   }
 
   blockquote {
-    @apply bg-gray-200 px-8 py-4 my-6 border rounded shadow text-center;
+    @apply px-8 py-4 my-6 border-2 rounded text-center;
   }
 
   .center {
