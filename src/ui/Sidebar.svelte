@@ -1,15 +1,23 @@
 <script>
   import { afterPageLoad } from "@roxi/routify";
 
-  let observer = new IntersectionObserver(OnIntersection, {});
+  let observer = null;
+
+  if (typeof IntersectionObserver !== "undefined") {
+    observer = new IntersectionObserver(OnIntersection, {});
+  }
 
   let links = [];
   let activeIDs = new Set();
 
-  $afterPageLoad((_page) => {
-    links = document.querySelectorAll("#content h2");
-    links.forEach((link) => observer.observe(link));
-  });
+  if (observer) {
+    $afterPageLoad((_page) => {
+      setTimeout(() => {
+        links = document.querySelectorAll("#content h2");
+        links.forEach((link) => observer.observe(link));
+      }, 0);
+    });
+  }
 
   function OnIntersection(values) {
     for (const value of values) {
