@@ -31,7 +31,7 @@
 </style>
 
 {#if links.length}
-  <div class="hidden lg:block absolute right-0 top-0 m-12 z-20">
+  <div class="hidden lg:block fixed right-0 top-0 m-12 mt-24 z-20">
     <div class="uppercase text-xs font-bold text-gray-400 mb-4">Contents</div>
     {#each links as link}
       <div
