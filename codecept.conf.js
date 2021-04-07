@@ -15,6 +15,9 @@ exports.config = {
   mocha: {},
   name: "docs",
   plugins: {
+    autoDelay: {
+      enabled: true,
+    },
     retryFailedStep: {
       enabled: true,
     },
