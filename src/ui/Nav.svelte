@@ -92,7 +92,7 @@
   bind:this={hamburger}
   data-hamburger="true"
   data-menu="true"
-  class="absolute md:hidden z-50 top-0 left-0 cursor-pointer m-4 text-gray-100">
+  class="fixed md:hidden z-50 top-0 left-0 cursor-pointer m-4 text-gray-100">
   <div class:black={show} class="w-6">
     <MenuIcon />
   </div>
