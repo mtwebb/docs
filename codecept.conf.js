@@ -16,7 +16,7 @@ exports.config = {
   name: "docs",
   plugins: {
     autoDelay: {
-      enabled: true,
+      enabled: process.env.CI !== undefined,
       delayAfter: 800,
     },
     retryFailedStep: {
