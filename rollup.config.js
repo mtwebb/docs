@@ -86,6 +86,7 @@ export default {
           extension: ".md",
           rehypePlugins: [raw, screenshot, list, headingAnchor, unraw],
         }),
+
         autoPreprocess({
           postcss: {
             plugins: [
@@ -93,6 +94,10 @@ export default {
               require("postcss-nested"),
               require("autoprefixer"),
             ],
+          },
+
+          typescript: {
+            tsconfigFile: "./editor/tsconfig.json",
           },
         }),
       ],
