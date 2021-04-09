@@ -28,10 +28,88 @@ a deck, for example).
 Literals are the simplest types of expressions. They simply specify the value that
 they produce directly.
 
+<Editor rule={literal}></Editor>
+
 ### Operators
+
+<Editor rule={addition}></Editor>
 
 ### Sinks
 
 ### Control Flow
 
 ### Choices
+
+<script>
+  import Editor from "../../../../editor/src/components/automation/rule/EphemeralEditor.svelte";
+
+  const literal = {
+    "id": "K8v_5CfMq",
+    "name": "Rule #1",
+    "value": {
+      "block": {
+        "id": "K8v_5CfMq",
+        "steps": {
+          "blqgbtZCK": {
+            "id": "blqgbtZCK",
+            "expression": {
+              "id": "z30oV2-vZR",
+              "body": {
+                "literal": {
+                  "integer": 42
+                }
+              },
+            }
+          }
+        }
+      }
+    }
+  };
+
+  const addition = {
+  "id": "K8v_5CfMq",
+  "name": "Rule #1",
+  "value": {
+    "block": {
+      "id": "K8v_5CfMq",
+      "steps": {
+        "Ayd7WZjal": {
+          "id": "Ayd7WZjal",
+          "expression": {
+            "id": "NhzQWU3uIt",
+            "body": {
+              "op": {
+                "binary": {
+                  "op": "add",
+                  "arg1": {
+                    "id": "Z1dVfbupeS",
+                    "body": {
+                      "literal": {
+                        "integer": 2
+                      }
+                    },
+                    "typeinfo": null,
+                    "metadata": null
+                  },
+                  "arg2": {
+                    "id": "VQJN04d1s",
+                    "body": {
+                      "literal": {
+                        "integer": 3
+                      }
+                    },
+                    "typeinfo": null,
+                    "metadata": null
+                  }
+                }
+              }
+            },
+            "typeinfo": null,
+            "metadata": null
+          }
+        }
+      }
+    }
+  },
+};
+</script>
