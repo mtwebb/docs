@@ -1,10 +1,14 @@
 import { mdsvex } from "mdsvex";
+import replace from "@rollup/plugin-replace";
 import raw from "rehype-raw";
 import screenshot from "./plugins/screenshot";
+import rust from "@wasm-tool/rollup-plugin-rust";
+import json from "@rollup/plugin-json";
 import list from "./plugins/list";
 import headingAnchor from "./plugins/heading-anchor";
 import unraw from "./plugins/unraw";
 import svelte from "rollup-plugin-svelte-hot";
+import typescript from "@rollup/plugin-typescript";
 import Hmr from "rollup-plugin-hot";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
@@ -59,6 +63,18 @@ export default {
     chunkFileNames: `[name]${(production && "-[hash]") || ""}.js`,
   },
   plugins: [
+    replace({
+      __env__: process.env.BGLAB_ENV || (production ? "prod" : "local"),
+      "process.env.STATELESS": process.env.STATELESS,
+    }),
+
+    json(),
+
+    rust({
+      debug: !production,
+      serverPath: "/build/",
+    }),
+
     svelte({
       extensions: [".svelte", ".md"],
       dev: !production, // run-time checks
@@ -88,6 +104,11 @@ export default {
       dedupe: (importee) => !!importee.match(/svelte(\/|$)/),
     }),
     commonjs(),
+
+    typescript({
+      sourceMap: !production,
+      tsconfig: "./editor/tsconfig.json",
+    }),
 
     production && terser(),
     !production && !isNollup && serve(),
