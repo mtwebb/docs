@@ -7,22 +7,30 @@ text: "Properties"
 
   const text = {
     name: "Text",
-    type: "text",
+    value: {
+      text: "",
+    }
   };
 
   const image = {
     name: "Image",
-    type: "image",
+    value: {
+      image: "",
+    }
   };
 
   const number = {
     name: "Number",
-    type: "number",
+    value: {
+      number: 0,
+    }
   };
 
   const boolean = {
     name: "Boolean",
-    type: "boolean",
+    value: {
+      boolean: true,
+    }
   };
 </script>
 
@@ -43,26 +51,26 @@ Properties are also frequently manipulated in [rules](./rules).
 ## Types of properties
 
 <div class="property">
-<Property property={text} hoverable={false} selectable={false} showTools={false}></Property>
+<Property property={text} hoverable={false} selectable={false} tools={false}></Property>
 </div>
 
 Title text, descriptions etc. are typical uses of a **text** property.
 
 <div class="property">
-<Property property={image} hoverable={false} selectable={false} showTools={false}></Property>
+<Property property={image} hoverable={false} selectable={false} tools={false}></Property>
 </div>
 
 Useful when you want to associate a different image with each component instance
 (that you can subsequently pull into the layout).
 
 <div class="property">
-<Property property={number} hoverable={false} selectable={false} showTools={false}></Property>
+<Property property={number} hoverable={false} selectable={false} tools={false}></Property>
 </div>
 
 A numeric attribute (a card cost or attack value, for example).
 
 <div class="property">
-<Property property={boolean} hoverable={false} selectable={false} showTools={false}></Property>
+<Property property={boolean} hoverable={false} selectable={false} tools={false}></Property>
 </div>
 
 Boolean properties can be either **true** or **false**. These are typically
