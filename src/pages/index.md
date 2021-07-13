@@ -30,5 +30,5 @@ works on all platforms, including mobile devices with tiny screens.
 ### Automation
 
 Choose between sandbox-style play, full rules enforcement or anything between. The
-rules editor allows you to script your entire game without writing a single line of code.
+rule editor allows you to script your entire game without writing a single line of code.
 The platform also provides bots that can play your game automatically.
