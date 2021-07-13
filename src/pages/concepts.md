@@ -7,8 +7,10 @@ index: 0
 
 ### Component
 
-A game object that you can interact with during play (a card, for example).
-A component can have multiple instances, each slightly different from the other.
+A blueprint for a game object like a card or tile.
+A component can have multiple instances, each created from the
+same blueprint, but differing from each other based on the parameters
+used to create them.
 Components have layouts that determine what they look like.
 They can hold data via [properties](/guides/automation/properties).
 You may also attach [rules](/guides/automation/rules) to components.
